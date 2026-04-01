@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Blueprint grid pattern */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+            background-color: #F0F4F8;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            z-index: 2;
+            background-color: #F0F4F8;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: 400;
+            font-style: italic;
+            color: #334E68;
+            line-height: 1.4;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 30px;
+            width: 100%;
+            height: 100%;
+        }
+        .grid-item {
+            background-color: #D9E2EC;
+            border-top: 5px solid #102A43;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .grid-item h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .grid-item h3 i {
+            color: #B12A2A;
+            margin-right: 15px;
+            font-size: 28px;
+            width: 35px;
+            text-align: center;
+        }
+        .grid-item p {
+            font-size: 18px;
+            color: #334E68;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 150.252px);">
+            <h1>Virtualized Middleware Manages Infrastructure Concerns</h1>
+            <h2>The middleware handles four critical functions to coordinate the architecture</h2>
+        </div>
+        <div class="right-pane">
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3><span style="font-size: 32px"><i class="fas fa-route"></i> Messaging Grid</span></h3>
+                    <p><span style="font-size: 24px">Routes incoming requests to available processing units using load-balancing algorithms (e.g., round-robin, next-available). Implemented via HA Proxy, Nginx, etc.</span></p>
+                </div>
+                <div class="grid-item">
+                    <h3 style="transform: translate(0px, -44.6309px);"><span style="font-size: 32px"><i class="fas fa-sync-alt"></i> Data Grid</span></h3>
+                    <p><span style="font-size: 24px">Synchronizes data across processing units via replicated caches. The most critical component of the architecture.</span></p>
+                </div>
+                <div class="grid-item" style="transform: translate(0px, 1.06e-05px);">
+                    <h3 style="transform: translate(0px, -63.2966px);"><i class="fas fa-cogs"></i> Processing Grid</h3>
+                    <p style="transform: translate(0px, -62.3112px);"><span style="font-size: 24px">Optional component that orchestrates requests requiring coordination across multiple processing unit types (e.g., order + payment).</span></p>
+                </div>
+                <div class="grid-item">
+                    <h3 style="transform: translate(0px, -50.4107px);"><i class="fas fa-sliders-h"></i> Deployment Manager</h3>
+                    <p style="transform: translate(0px, -64.3246px);"><span style="font-size: 24px">Dynamically starts and shuts down processing unit instances based on load conditions. Key to achieving variable scalability (elasticity).</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Blueprint grid pattern */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        .left-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+            z-index: 2;
+        }
+        .right-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #D9E2EC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            z-index: 2;
+            border-left: 5px solid #B12A2A;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #334E68;
+            margin-bottom: 40px;
+        }
+        .content-list {
+            list-style-type: none;
+        }
+        .content-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-list i {
+            color: #B12A2A;
+            margin-top: 5px;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        .layer-block {
+            background-color: #102A43;
+            color: #F0F4F8;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .web-layer { width: 100%; height: 80px; }
+        .app-layer { width: 70%; height: 80px; }
+        .db-layer { width: 40%; height: 80px; background-color: #B12A2A; }
+        .arrow-down {
+            color: #334E68;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(-6.16237px, 36.3591px);">
+            <h1>Traditional Web Topology Creates a Scalability Triangle</h1>
+            <h2><span style="font-size: 32px">The bottleneck inevitably shifts to the database layer</span></h2>
+            <ul class="content-list">
+                <li><span style="font-size: 24px"><i class="fas fa-server"></i><strong>Web Server Layer:</strong> The easiest and cheapest to scale horizontally. It forms the wide top of the triangle.</span></li>
+                <li><span style="font-size: 24px"><i class="fas fa-cogs"></i><strong>Application Server Layer:</strong> More complex and expensive to scale. The bottleneck shifts here after web servers scale.</span></li>
+                <li><span style="font-size: 24px"><i class="fas fa-database"></i><strong>Database Server Layer:</strong> The hardest and most expensive to scale. It becomes the ultimate limiting factor, forming the narrow bottom of the triangle.</span></li>
+                <li style="transform: translate(-4.10811px, -10.9525px);"><span style="font-size: 24px"><i class="fas fa-exclamation-triangle"></i><strong>The Problem:</strong> This "triangle topology" limits the overall system throughput. Space-Based Architecture was designed specifically to solve this fundamental problem.</span></li>
+            </ul>
+        </div>
+        <div class="right-pane" style="transform: translate(-6.16237px, 140.945px);">
+            <div class="layer-block web-layer"><span style="font-size: 32px">Web Servers<br>(Easy to Scale)</span></div>
+            <i class="fas fa-arrow-down arrow-down"></i>
+            <div class="layer-block app-layer"><span style="font-size: 32px">App Servers<br>(Harder)</span></div>
+            <i class="fas fa-arrow-down arrow-down"></i>
+            <div class="layer-block db-layer" style="width: 229.02px; min-width: 229.02px; max-width: 229.02px; transform: translate(-2.41193px, -1.29782px);"><span style="font-size: 32px">Database<br>(Bottleneck)</span></div>
+        </div>
+    </div>
+</body>
+</html>

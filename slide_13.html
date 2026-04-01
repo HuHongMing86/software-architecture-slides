@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #F0F4F8;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+        .conclusion {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #D9E2EC;
+            line-height: 1.5;
+            border-top: 2px solid #B12A2A;
+            padding-top: 20px;
+        }
+        .use-case-block {
+            background-color: #D9E2EC;
+            border-left: 8px solid #102A43;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .use-case-block:last-child {
+            margin-bottom: 0;
+        }
+        .use-case-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .use-case-title i {
+            color: #B12A2A;
+            margin-right: 15px;
+            font-size: 32px;
+            width: 40px;
+            text-align: center;
+        }
+        .use-case-list {
+            list-style-type: none;
+        }
+        .use-case-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+        }
+        .use-case-list li:last-child {
+            margin-bottom: 0;
+        }
+        .use-case-list i {
+            color: #B12A2A;
+            margin-top: 5px;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 103.045px);">
+            <h1>Concert Ticketing and Online Auctions Are Ideal Use Cases</h1>
+            <div class="conclusion">
+                Both scenarios require high performance, high scalability, and high elasticity – the three defining strengths of Space-Based Architecture.
+            </div>
+        </div>
+        <div class="right-pane">
+            <div class="use-case-block">
+                <div class="use-case-title">
+                    <i class="fas fa-ticket-alt"></i> Concert Ticketing System
+                </div>
+                <ul class="use-case-list">
+                    <li><span style="font-size: 24px"><i class="fas fa-check"></i> User load surges from hundreds to thousands (or tens of thousands) when tickets go on sale.</span></li>
+                    <li><span style="font-size: 24px"><i class="fas fa-check"></i> Seat availability must be updated continuously with minimal latency.</span></li>
+                    <li><span style="font-size: 24px"><i class="fas fa-check"></i> The Deployment Manager pre-starts processing units before ticket sales begin, placing them on standby.</span></li>
+                </ul>
+            </div>
+            <div class="use-case-block" style="transform: translate(0px, -18.8674px);">
+                <div class="use-case-title">
+                    <i class="fas fa-gavel"></i> Online Auction System
+                </div>
+                <ul class="use-case-list">
+                    <li><span style="font-size: 24px"><i class="fas fa-check"></i> Unpredictable user and request load spikes when auctions start.</span></li>
+                    <li><span style="font-size: 24px"><i class="fas fa-check"></i> Multiple processing units can be dedicated to individual auctions for data consistency.</span></li>
+                    <li><span style="font-size: 24px"><i class="fas fa-check"></i> Asynchronous data pumps send bidding data to other processing units (bid history, analytics, audit) with low latency.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

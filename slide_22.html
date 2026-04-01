@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-section {
+            background-color: #102A43;
+            width: 100%;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 60px;
+            padding-right: 60px;
+            border-bottom: 5px solid #B12A2A;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #F0F4F8;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #D9E2EC;
+        }
+        .content-section {
+            display: flex;
+            width: 100%;
+            flex: 1;
+            position: relative;
+        }
+        /* Blueprint grid pattern */
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        .column {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 40px;
+            z-index: 2;
+        }
+        .column.left {
+            border-right: 2px dashed #334E68;
+        }
+        .col-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .col-title i {
+            color: #B12A2A;
+            margin-right: 15px;
+        }
+/* Diagram styles */
+        .diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        .ui-block, .ui-micro-block, .service-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            font-weight: bold;
+            border: 3px solid #102A43;
+            text-align: center;
+        }
+        .ui-block {
+            background-color: #334E68;
+            color: #F0F4F8;
+            font-size: 22px;
+            width: 80%;
+        }
+        .ui-micro-block {
+            background-color: #334E68;
+            color: #F0F4F8;
+            font-size: 18px;
+            width: 30%;
+        }
+        .service-block {
+            background-color: #D9E2EC;
+            color: #102A43;
+            font-size: 18px;
+            width: 30%;
+            border-width: 2px;
+        }
+        .arrow-container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .arrow-container i {
+            color: #B12A2A;
+            font-size: 24px;
+        }
+        .services-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
+        .vertical-slice {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            background-color: rgba(217, 226, 236, 0.4);
+            border: 2px dashed #B12A2A;
+            padding-top: 10px;
+        }
+/* List styles */
+        .feature-list {
+            list-style-type: none;
+        }
+        .feature-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        .feature-list i {
+            margin-top: 5px;
+            margin-right: 15px;
+            font-size: 22px;
+        }
+        .feature-list.negative i {
+            color: #B12A2A;
+        }
+        .feature-list.positive i {
+            color: #334E68;
+        }
+        .feature-list strong {
+            color: #102A43;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="header-section">
+            <h1 style="transform: translate(-36.2675px, 21.3758px);">Front-End Integration – Monolithic UI vs. Micro Frontends</h1>
+            <h2 style="transform: translate(-36.2675px, 8.38507px);">How should the user interface interact with highly decoupled microservices?</h2>
+        </div>
+        <div class="content-section">
+            <div class="column left">
+                <div class="col-title">
+                    <i class="fas fa-desktop"></i> Monolithic UI
+                </div>
+<div class="diagram">
+                    <div class="ui-block">Single Web Application</div>
+                    <div class="arrow-container">
+                        <i class="fas fa-long-arrow-alt-down"></i>
+                        <i class="fas fa-long-arrow-alt-down"></i>
+                        <i class="fas fa-long-arrow-alt-down"></i>
+                    </div>
+                    <div class="services-container">
+                        <div class="service-block"><span style="font-size: 24px">Service A</span></div>
+                        <div class="service-block">Service B</div>
+                        <div class="service-block">Service C</div>
+                    </div>
+                </div>
+<ul class="feature-list negative">
+                    <li>
+                        <i class="fas fa-times-circle"></i>
+                        <div><span style="font-size: 24px"><strong>Breaks Bounded Context:</strong> The UI team must coordinate with multiple backend teams, creating artificial coupling.</span></div>
+                    </li>
+                    <li>
+                        <i class="fas fa-times-circle"></i>
+                        <div style="transform: translate(-2.28e-05px, -17.0386px);"><span style="font-size: 24px"><strong>Deployment Bottleneck:</strong> Any small UI change requires testing and deploying the entire monolithic front-end application.</span></div>
+                    </li>
+                </ul>
+            </div>
+<div class="column right" style="transform: translate(0px, -7.47064px);">
+                <div class="col-title">
+                    <i class="fas fa-puzzle-piece"></i> Micro Frontends
+                </div>
+<div class="diagram">
+                    <div class="services-container" style="width: 90%;">
+                        <div class="vertical-slice">
+                            <div class="ui-micro-block" style="width: 90%;"><span style="font-size: 24px">UI A</span></div>
+                            <div class="arrow-container" style="width: 100%;">
+                                <i class="fas fa-long-arrow-alt-down"></i>
+                            </div>
+                            <div class="service-block" style="width: 90%; margin-bottom: 10px;"><span style="font-size: 24px">Service A</span></div>
+                        </div>
+                        <div class="vertical-slice">
+                            <div class="ui-micro-block" style="width: 90%;"><span style="font-size: 24px">UI B</span></div>
+                            <div class="arrow-container" style="width: 100%;">
+                                <i class="fas fa-long-arrow-alt-down"></i>
+                            </div>
+                            <div class="service-block" style="width: 90%; margin-bottom: 10px;"><span style="font-size: 24px">Service B</span></div>
+                        </div>
+                        <div class="vertical-slice">
+                            <div class="ui-micro-block" style="width: 90%;"><span style="font-size: 24px">UI C</span></div>
+                            <div class="arrow-container" style="width: 100%;">
+                                <i class="fas fa-long-arrow-alt-down"></i>
+                            </div>
+                            <div class="service-block" style="width: 90%; margin-bottom: 10px;"><span style="font-size: 24px">Service C</span></div>
+                        </div>
+                    </div>
+                </div>
+<ul class="feature-list positive">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div style="transform: translate(-1.26678px, -10.7509px);"><span style="font-size: 24px"><strong>Preserves Bounded Context:</strong> Teams own the entire vertical slice from the user interface down to the database.</span></div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div style="transform: translate(-1.26678px, -17.219px);"><span style="font-size: 24px"><strong>Independent Deployment:</strong> UI components can be updated, tested, and deployed independently without affecting other domains.</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

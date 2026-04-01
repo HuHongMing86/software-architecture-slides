@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Architecture: Space-Based &amp; Microservices</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #1a1a2e;
+            font-family: "Times New Roman", Times, serif;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ====== Slide Viewport ====== */
+        #slide-viewport {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            background: #000;
+            overflow: hidden;
+            transform-origin: center center;
+        }
+
+        #slide-viewport iframe {
+            width: 1280px;
+            height: 720px;
+            border: none;
+            display: block;
+        }
+
+        /* ====== Bottom Control Bar ====== */
+        #control-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: rgba(16, 42, 67, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 1000;
+            border-top: 2px solid #B12A2A;
+            padding: 0 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        #control-bar.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #control-bar button {
+            background: none;
+            border: 2px solid #D9E2EC;
+            color: #D9E2EC;
+            font-size: 18px;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        #control-bar button:hover {
+            background: #B12A2A;
+            border-color: #B12A2A;
+            color: #fff;
+        }
+
+        #slide-counter {
+            color: #D9E2EC;
+            font-size: 18px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        #progress-bar-container {
+            position: fixed;
+            bottom: 56px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(51, 78, 104, 0.5);
+            z-index: 1001;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: #B12A2A;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* ====== Thumbnail Panel ====== */
+        #thumbnail-panel {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 56px;
+            width: 240px;
+            background: rgba(16, 42, 67, 0.97);
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            border-right: 2px solid #334E68;
+            padding: 15px;
+        }
+
+        #thumbnail-panel.open {
+            transform: translateX(0);
+        }
+
+        .thumb-item {
+            width: 100%;
+            margin-bottom: 12px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: border-color 0.2s ease;
+            position: relative;
+        }
+
+        .thumb-item.active {
+            border-color: #B12A2A;
+        }
+
+        .thumb-item:hover {
+            border-color: #D9E2EC;
+        }
+
+        .thumb-item .thumb-number {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            background: rgba(16, 42, 67, 0.85);
+            color: #D9E2EC;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 8px;
+            z-index: 2;
+        }
+
+        .thumb-item iframe {
+            width: 210px;
+            height: 118px;
+            pointer-events: none;
+            border: none;
+            display: block;
+            transform-origin: 0 0;
+        }
+
+        .thumb-wrapper {
+            width: 210px;
+            height: 118px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ====== Help Overlay ====== */
+        #help-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #help-overlay.visible {
+            display: flex;
+        }
+
+        #help-content {
+            background: #102A43;
+            border: 3px solid #B12A2A;
+            padding: 50px;
+            max-width: 600px;
+            color: #D9E2EC;
+        }
+
+        #help-content h2 {
+            font-size: 36px;
+            color: #F0F4F8;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        #help-content table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #help-content td {
+            padding: 10px 15px;
+            font-size: 18px;
+            border-bottom: 1px solid #334E68;
+        }
+
+        #help-content td:first-child {
+            font-weight: bold;
+            color: #F0F4F8;
+            width: 180px;
+        }
+
+        #help-content .close-help {
+            display: block;
+            margin: 30px auto 0;
+            background: #B12A2A;
+            color: #fff;
+            border: none;
+            padding: 12px 40px;
+            font-size: 18px;
+            cursor: pointer;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        /* Scrollbar styling for thumbnail panel */
+        #thumbnail-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+        #thumbnail-panel::-webkit-scrollbar-track {
+            background: #102A43;
+        }
+        #thumbnail-panel::-webkit-scrollbar-thumb {
+            background: #334E68;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide Viewport -->
+    <div id="slide-viewport">
+        <iframe id="slide-frame" src="slide_1.html" scrolling="no"></iframe>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <!-- Control Bar -->
+    <div id="control-bar">
+        <button id="btn-thumbnails" title="Toggle Thumbnails (T)">
+            <i class="fas fa-th"></i>
+        </button>
+        <button id="btn-first" title="First Slide (Home)">
+            <i class="fas fa-step-backward"></i>
+        </button>
+        <button id="btn-prev" title="Previous Slide (Left Arrow)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <span id="slide-counter">1 / 30</span>
+        <button id="btn-next" title="Next Slide (Right Arrow)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <button id="btn-last" title="Last Slide (End)">
+            <i class="fas fa-step-forward"></i>
+        </button>
+        <button id="btn-fullscreen" title="Fullscreen (F)">
+            <i class="fas fa-expand"></i>
+        </button>
+        <button id="btn-help" title="Help (H)">
+            <i class="fas fa-question"></i>
+        </button>
+    </div>
+
+    <!-- Thumbnail Panel -->
+    <div id="thumbnail-panel">
+    </div>
+
+    <!-- Help Overlay -->
+    <div id="help-overlay">
+        <div id="help-content">
+            <h2>Keyboard Shortcuts</h2>
+            <table>
+                <tr><td>Right / Down / Space</td><td>Next slide</td></tr>
+                <tr><td>Left / Up</td><td>Previous slide</td></tr>
+                <tr><td>Home</td><td>First slide</td></tr>
+                <tr><td>End</td><td>Last slide</td></tr>
+                <tr><td>F</td><td>Toggle fullscreen</td></tr>
+                <tr><td>T</td><td>Toggle thumbnails</td></tr>
+                <tr><td>Escape</td><td>Exit fullscreen / Close panel</td></tr>
+                <tr><td>H</td><td>Toggle this help</td></tr>
+            </table>
+            <button class="close-help" onclick="toggleHelp()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const TOTAL_SLIDES = 30;
+        let currentSlide = 1;
+        let thumbsOpen = false;
+        let thumbsBuilt = false;
+
+        const slideFrame = document.getElementById('slide-frame');
+        const slideCounter = document.getElementById('slide-counter');
+        const progressBar = document.getElementById('progress-bar');
+        const thumbPanel = document.getElementById('thumbnail-panel');
+        const controlBar = document.getElementById('control-bar');
+        const helpOverlay = document.getElementById('help-overlay');
+        const viewport = document.getElementById('slide-viewport');
+
+        // ====== Navigation ======
+        function goToSlide(n) {
+            if (n < 1) n = 1;
+            if (n > TOTAL_SLIDES) n = TOTAL_SLIDES;
+            currentSlide = n;
+            slideFrame.src = `slide_${n}.html`;
+            slideCounter.textContent = `${n} / ${TOTAL_SLIDES}`;
+            progressBar.style.width = `${(n / TOTAL_SLIDES) * 100}%`;
+            updateThumbActive();
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+        function firstSlide() { goToSlide(1); }
+        function lastSlide() { goToSlide(TOTAL_SLIDES); }
+
+        // ====== Thumbnails ======
+        function buildThumbnails() {
+            if (thumbsBuilt) return;
+            for (let i = 1; i <= TOTAL_SLIDES; i++) {
+                const item = document.createElement('div');
+                item.className = 'thumb-item' + (i === currentSlide ? ' active' : '');
+                item.dataset.slide = i;
+                item.innerHTML = `
+                    <div class="thumb-number">${i}</div>
+                    <div class="thumb-wrapper">
+                        <iframe src="slide_${i}.html" scrolling="no"
+                            style="transform: scale(${210/1280}); width: 1280px; height: 720px;">
+                        </iframe>
+                    </div>
+                `;
+                item.addEventListener('click', () => {
+                    goToSlide(i);
+                    toggleThumbs();
+                });
+                thumbPanel.appendChild(item);
+            }
+            thumbsBuilt = true;
+        }
+
+        function updateThumbActive() {
+            const items = thumbPanel.querySelectorAll('.thumb-item');
+            items.forEach(item => {
+                item.classList.toggle('active', parseInt(item.dataset.slide) === currentSlide);
+            });
+            const activeItem = thumbPanel.querySelector('.thumb-item.active');
+            if (activeItem) {
+                activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function toggleThumbs() {
+            thumbsOpen = !thumbsOpen;
+            if (thumbsOpen) buildThumbnails();
+            thumbPanel.classList.toggle('open', thumbsOpen);
+        }
+
+        // ====== Fullscreen ======
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            } else {
+                document.exitFullscreen().catch(() => {});
+            }
+        }
+
+        // ====== Help ======
+        function toggleHelp() {
+            helpOverlay.classList.toggle('visible');
+        }
+
+        // ====== Scaling ======
+        function scaleViewport() {
+            const w = window.innerWidth;
+            const h = window.innerHeight - 60;
+            const scaleX = w / 1280;
+            const scaleY = h / 720;
+            const scale = Math.min(scaleX, scaleY);
+            viewport.style.transform = `scale(${scale})`;
+        }
+
+        // ====== Auto-hide control bar in fullscreen ======
+        let hideTimer;
+        function showControls() {
+            controlBar.classList.remove('hidden');
+            clearTimeout(hideTimer);
+            if (document.fullscreenElement) {
+                hideTimer = setTimeout(() => {
+                    controlBar.classList.add('hidden');
+                }, 3000);
+            }
+        }
+
+        // ====== Event Listeners ======
+        document.getElementById('btn-prev').addEventListener('click', prevSlide);
+        document.getElementById('btn-next').addEventListener('click', nextSlide);
+        document.getElementById('btn-first').addEventListener('click', firstSlide);
+        document.getElementById('btn-last').addEventListener('click', lastSlide);
+        document.getElementById('btn-fullscreen').addEventListener('click', toggleFullscreen);
+        document.getElementById('btn-thumbnails').addEventListener('click', toggleThumbs);
+        document.getElementById('btn-help').addEventListener('click', toggleHelp);
+
+        document.addEventListener('keydown', (e) => {
+            if (helpOverlay.classList.contains('visible')) {
+                if (e.key === 'Escape' || e.key === 'h' || e.key === 'H') {
+                    toggleHelp();
+                }
+                return;
+            }
+
+            switch (e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                case ' ':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    prevSlide();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    firstSlide();
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    lastSlide();
+                    break;
+                case 'f':
+                case 'F':
+                    toggleFullscreen();
+                    break;
+                case 't':
+                case 'T':
+                    toggleThumbs();
+                    break;
+                case 'h':
+                case 'H':
+                    toggleHelp();
+                    break;
+                case 'Escape':
+                    if (thumbsOpen) toggleThumbs();
+                    break;
+            }
+            showControls();
+        });
+
+        document.addEventListener('mousemove', showControls);
+
+        window.addEventListener('resize', scaleViewport);
+        document.addEventListener('fullscreenchange', () => {
+            scaleViewport();
+            showControls();
+        });
+
+        // Initial setup
+        scaleViewport();
+        goToSlide(1);
+    </script>
+</body>
+</html>

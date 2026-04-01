@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #F0F4F8;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+        .definition-box {
+            background-color: rgba(217, 226, 236, 0.1);
+            border-left: 5px solid #D9E2EC;
+            padding: 20px;
+        }
+        .definition-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #D9E2EC;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .definition-title i {
+            margin-right: 10px;
+        }
+        .definition-text {
+            font-size: 20px;
+            color: #F0F4F8;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .pros-cons-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            gap: 20px;
+            width: 100%;
+        }
+        .block {
+            background-color: #D9E2EC;
+            padding: 25px 20px;
+            border: 3px solid #102A43;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .block.pros {
+            border-top: 10px solid #334E68;
+        }
+        .block.cons {
+            border-top: 10px solid #B12A2A;
+        }
+        .block-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .block.pros .block-title {
+            color: #334E68;
+        }
+        .block.cons .block-title {
+            color: #B12A2A;
+        }
+        .block-title i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        .content-list {
+            list-style-type: none;
+        }
+        .content-list li {
+            font-size: 18px;
+            color: #102A43;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-list li:last-child {
+            margin-bottom: 0;
+        }
+        .content-list i {
+            margin-top: 4px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .block.pros .content-list i {
+            color: #334E68;
+        }
+        .block.cons .content-list i {
+            color: #B12A2A;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 104.186px);">
+            <h1>Orchestration Simplifies Complex Workflows at the Cost of Coupling</h1>
+            <div class="definition-box">
+                <div class="definition-title"><i class="fas fa-sitemap"></i> Orchestration</div>
+                <div class="definition-text">
+                    A communication style where a central mediator (orchestrator) coordinates the workflow, explicitly calling individual services to perform their tasks and managing the overall state of the transaction.
+                </div>
+            </div>
+        </div>
+        <div class="right-pane">
+            <div class="pros-cons-container">
+                <div class="block pros" style="transform: translate(0px, 123.012px);">
+                    <div class="block-title"><i class="fas fa-thumbs-up"></i> Pros (Strengths)</div>
+                    <ul class="content-list">
+                        <li><i class="fas fa-check"></i> <strong>Centralized Error Handling:</strong> Easy to manage failures, retries, and timeouts from a single location.</li>
+                        <li><i class="fas fa-check"></i> <strong>Workflow Tracking:</strong> The orchestrator knows the exact state of the business transaction at any given time.</li>
+                        <li><i class="fas fa-check"></i> <strong>State Management:</strong> Greatly simplifies complex workflows that require compensating actions or rollbacks.</li>
+                    </ul>
+                </div>
+                <div class="block cons" style="transform: translate(-0.0084228px, 129.841px);">
+                    <div class="block-title"><i class="fas fa-exclamation-triangle"></i> Cons (Weaknesses)</div>
+                    <ul class="content-list">
+                        <li><i class="fas fa-times"></i> <strong>High Coupling:</strong> The orchestrator becomes highly coupled to the APIs and contracts of all participating services.</li>
+                        <li><i class="fas fa-times"></i> <strong>Bottleneck Risk:</strong> The central orchestrator can become a performance bottleneck under heavy load.</li>
+                        <li><i class="fas fa-times"></i> <strong>Single Point of Failure:</strong> If the orchestrator goes down, the entire workflow halts, requiring high availability setups.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

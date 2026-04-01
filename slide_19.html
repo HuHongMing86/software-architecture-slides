@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Blueprint grid pattern */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #D9E2EC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #334E68;
+            margin-bottom: 40px;
+        }
+        .content-list {
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+        .content-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-list i {
+            color: #B12A2A;
+            margin-top: 5px;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        .conclusion {
+            font-size: 22px;
+            font-weight: bold;
+            font-style: italic;
+            color: #102A43;
+            line-height: 1.4;
+            background-color: rgba(217, 226, 236, 0.6);
+            padding: 20px;
+            border-left: 5px solid #102A43;
+        }
+        /* Diagram Styles */
+        .diagram-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .service-pair {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #F0F4F8;
+            padding: 15px;
+            border: 2px solid #102A43;
+        }
+        .service-block {
+            background-color: #102A43;
+            color: #F0F4F8;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            width: 140px;
+        }
+        .db-block {
+            background-color: #B12A2A;
+            color: #F0F4F8;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            width: 140px;
+        }
+        .db-block.alt1 {
+            background-color: #334E68;
+        }
+        .db-block.alt2 {
+            background-color: #102A43;
+        }
+        .connection {
+            color: #B12A2A;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 153.121px);">
+            <div class="diagram-container">
+                <div class="service-pair">
+                    <div class="service-block"><i class="fas fa-cogs"></i><br>Service A</div>
+                    <i class="fas fa-arrows-alt-h connection"></i>
+                    <div class="db-block"><i class="fas fa-database"></i><br>Relational DB</div>
+                </div>
+                <div class="service-pair">
+                    <div class="service-block"><i class="fas fa-cogs"></i><br>Service B</div>
+                    <i class="fas fa-arrows-alt-h connection"></i>
+                    <div class="db-block alt1"><i class="fas fa-database"></i><br>Document DB</div>
+                </div>
+                <div class="service-pair">
+                    <div class="service-block"><i class="fas fa-cogs"></i><br>Service C</div>
+                    <i class="fas fa-arrows-alt-h connection"></i>
+                    <div class="db-block alt2"><i class="fas fa-database"></i><br>Graph DB</div>
+                </div>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(13.6803px, 15.7325px);">
+            <h1 style="width: 670.262px; min-width: 670.262px; max-width: 670.262px; transform: translate(-48.5885px, 41.0522px);"><span style="font-size: 48px">Data Isolation – Each Service Owns Its Own Data</span></h1>
+            <h2 style="transform: translate(0px, 32.1477px);">Microservices avoid all types of coupling, including shared schemas and databases used as integration points.</h2>
+            <ul class="content-list">
+                <li>
+                    <i class="fas fa-ban"></i>
+                    <div><span style="font-size: 24px"><strong>No Single Source of Truth:</strong> There is no central shared relational database.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-project-diagram"></i>
+                    <div><span style="font-size: 24px"><strong>Data Distribution:</strong> Architects must decide whether to designate one domain as the source of truth and coordinate with it, or use database replication/caching to distribute information.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-server"></i>
+                    <div style="transform: translate(0px, -11.8289px);"><span style="font-size: 24px"><strong>Polyglot Persistence:</strong> Each service can choose the most appropriate database technology (relational, document, graph, key-value) based on its specific needs.</span></div>
+                </li>
+            </ul>
+            <div class="conclusion" style="transform: translate(-605.677px, -47.2305px); width: 1252.5px; min-width: 1252.5px; max-width: 1252.5px;">
+                Benefit: Teams in highly decoupled systems can switch to a more suitable database without impacting other teams – a major advantage over monolithic architectures.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

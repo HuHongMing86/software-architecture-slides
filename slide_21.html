@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #334E68;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        .content-list {
+            list-style-type: none;
+            position: relative;
+            z-index: 2;
+        }
+        .content-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-list i {
+            color: #B12A2A;
+            margin-top: 5px;
+            margin-right: 15px;
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+        /* Diagram Styles */
+        .diagram-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .control-plane {
+            background-color: #B12A2A;
+            color: #F0F4F8;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            border: 3px solid #D9E2EC;
+            margin-bottom: 30px;
+        }
+        .arrows-row {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin-bottom: 30px;
+        }
+        .arrows-row i {
+            color: #D9E2EC;
+            font-size: 24px;
+        }
+        .data-plane {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 15px;
+        }
+        .node-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+        .sidecar-block {
+            background-color: #D9E2EC;
+            color: #102A43;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px solid #334E68;
+            margin-bottom: 5px;
+        }
+        .service-block {
+            background-color: #334E68;
+            color: #F0F4F8;
+            width: 100%;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #D9E2EC;
+        }
+        .plane-label {
+            color: #D9E2EC;
+            font-size: 18px;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(6.83881px, 183.217px);">
+            <div class="diagram-container">
+                <div class="control-plane"><span style="font-size: 24px"><i class="fas fa-sliders-h"></i> Control Plane</span></div>
+                <div class="arrows-row">
+                    <i class="fas fa-arrows-alt-v"></i>
+                    <i class="fas fa-arrows-alt-v"></i>
+                    <i class="fas fa-arrows-alt-v"></i>
+                </div>
+                <div class="data-plane">
+                    <div class="node-block">
+                        <div class="sidecar-block"><span style="font-size: 24px"><i class="fas fa-shield-alt"></i> Sidecar</span></div>
+                        <div class="service-block"><span style="font-size: 24px"><i class="fas fa-cogs"></i> Svc A</span></div>
+                    </div>
+                    <div class="node-block">
+                        <div class="sidecar-block"><span style="font-size: 24px"><i class="fas fa-shield-alt"></i> Sidecar</span></div>
+                        <div class="service-block"><span style="font-size: 24px"><i class="fas fa-cogs"></i> Svc B</span></div>
+                    </div>
+                    <div class="node-block">
+                        <div class="sidecar-block"><span style="font-size: 24px"><i class="fas fa-shield-alt"></i> Sidecar</span></div>
+                        <div class="service-block"><span style="font-size: 24px"><i class="fas fa-cogs"></i> Svc C</span></div>
+                    </div>
+                </div>
+                <div class="plane-label"><span style="font-size: 24px">Data Plane</span></div>
+            </div>
+        </div>
+        <div class="right-pane">
+            <h1>Service Mesh Provides Unified Operational Control</h1>
+            <h2>Connecting sidecars to form a Service Mesh for global control</h2>
+            <ul class="content-list">
+                <li>
+                    <i class="fas fa-network-wired"></i>
+                    <div><span style="font-size: 24px"><strong>The Service Mesh:</strong> By connecting all the sidecars across the microservices ecosystem, architects create a unified Service Mesh.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-layer-group"></i>
+                    <div><span style="font-size: 24px"><strong>Data Plane vs. Control Plane:</strong> The sidecars form the <em>Data Plane</em> (handling actual traffic), while a centralized console forms the <em>Control Plane</em> (managing configurations).</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-globe"></i>
+                    <div><span style="font-size: 24px"><strong>Global Observability:</strong> The control plane provides a holistic view of the entire system, enabling distributed tracing, logging, and monitoring across all services.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-tasks"></i>
+                    <div style="transform: translate(0px, -15.0577px);"><span style="font-size: 24px"><strong>Consistent Policies:</strong> Security policies, routing rules, and circuit breaker thresholds can be defined centrally in the control plane and pushed to all sidecars simultaneously.</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Blueprint grid pattern */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        .left-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+            z-index: 2;
+        }
+        .right-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #D9E2EC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            z-index: 2;
+            border-left: 5px solid #B12A2A;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #334E68;
+            margin-bottom: 30px;
+        }
+        .content-block {
+            margin-bottom: 25px;
+        }
+        .content-block h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .content-block h3 i {
+            color: #B12A2A;
+            margin-right: 10px;
+        }
+        .content-block p {
+            font-size: 20px;
+            color: #334E68;
+            line-height: 1.5;
+            padding-left: 34px;
+        }
+        .insight-box {
+            background-color: rgba(177, 42, 42, 0.1);
+            border-left: 5px solid #B12A2A;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .insight-box p {
+            font-size: 22px;
+            color: #102A43;
+            font-weight: bold;
+            font-style: italic;
+            line-height: 1.4;
+        }
+        .formula-container {
+            background-color: #102A43;
+            width: 100%;
+            padding: 40px 30px;
+            color: #F0F4F8;
+            border-top: 5px solid #B12A2A;
+        }
+        .formula-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #D9E2EC;
+        }
+        .formula-math {
+            font-size: 36px;
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #F0F4F8;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px 10px;
+            border: 2px dashed #334E68;
+        }
+        .formula-math span {
+            color: #B12A2A;
+        }
+        .legend {
+            list-style-type: none;
+        }
+        .legend li {
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .legend li strong {
+            color: #B12A2A;
+            font-size: 22px;
+            width: 50px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane">
+            <h1>Data Collisions Arise from Replication Latency</h1>
+            <h2><span style="font-size: 32px">When using active/active replicated caches, data collisions can occur due to replication delay between instances.</span></h2>
+<div class="content-block">
+                <h3><i class="fas fa-calculator"></i> Example Calculation</h3>
+                <p><span style="font-size: 24px">With 5 instances, 20 updates/sec, 50,000 rows, and 100ms latency, there are 72,000 updates/hour with only 14.4 potential collisions (0.02%).</span></p>
+            </div>
+<div class="content-block">
+                <h3><i class="fas fa-tachometer-alt"></i> Impact of Latency</h3>
+                <p><span style="font-size: 24px">Reducing replication latency from 100ms to 1ms drops potential collisions to just 0.1 per hour (0.0002%).</span></p>
+            </div>
+<div class="insight-box" style="transform: translate(-34.2131px, -28.7418px);">
+                <p><span style="color: #ff0000; font-size: 24px">Key Insight: Cache size is inversely proportional to collision probability; all other factors are directly proportional.</span></p>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(0.0084228px, 110.612px);">
+            <div class="formula-container">
+                <div class="formula-title">Collision Probability</div>
+                <div class="formula-math">
+                    CP = <span>N</span> × (<span>UR</span>² / <span>S</span>) × <span>RL</span>
+                </div>
+                <ul class="legend">
+                    <li><strong>N</strong> = Number of instances</li>
+                    <li><strong>UR</strong> = Update rate (ms)</li>
+                    <li><strong>S</strong> = Cache size (rows)</li>
+                    <li><strong>RL</strong> = Replication latency (ms)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

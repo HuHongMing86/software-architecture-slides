@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 35%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 65%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #F0F4F8;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #D9E2EC;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+        .info-box {
+            background-color: rgba(217, 226, 236, 0.1);
+            border-left: 4px solid #D9E2EC;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .info-box.warning {
+            border-left-color: #B12A2A;
+            background-color: rgba(177, 42, 42, 0.15);
+        }
+        .info-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #F0F4F8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .info-box.warning .info-title {
+            color: #B12A2A;
+        }
+        .info-title i {
+            margin-right: 10px;
+        }
+        .info-text {
+            font-size: 16px;
+            color: #D9E2EC;
+            line-height: 1.5;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            position: relative;
+            z-index: 2;
+            background-color: rgba(240, 244, 248, 0.95);
+            border: 3px solid #102A43;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #334E68;
+            padding: 16px 20px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #102A43;
+            color: #F0F4F8;
+            font-size: 22px;
+            font-weight: 800;
+            text-align: center;
+        }
+        .comparison-table th:first-child {
+            background-color: #334E68;
+            text-align: left;
+        }
+        .comparison-table td {
+            font-size: 18px;
+            color: #334E68;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .comparison-table td:first-child {
+            font-weight: bold;
+            color: #102A43;
+            text-align: left;
+            background-color: rgba(217, 226, 236, 0.5);
+        }
+        .highlight-cell {
+            color: #B12A2A !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane">
+            <h1>Replicated Cache vs. Distributed Cache</h1>
+            <h2>A Critical Design Decision</h2>
+<div class="info-box">
+                <div class="info-title"><i class="fas fa-lightbulb"></i> Recommendation</div>
+                <div class="info-text">
+                    Use both models within the same application. For example, use distributed cache for inventory counts (high consistency) and replicated cache for product descriptions (fast lookup).
+                </div>
+            </div>
+<div class="info-box warning">
+                <div class="info-title"><i class="fas fa-exclamation-triangle"></i> Near Cache Warning</div>
+                <div class="info-text">
+                    The near cache hybrid model (front-end MRU/MFU cache + full back-end distributed cache) is not recommended because front-end caches across processing units are not synchronized, causing inconsistent performance.
+                </div>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(0px, 139.538px);">
+            <table class="comparison-table" style="transform: translate(0px, -31.4752px);">
+                <thead>
+                    <tr>
+                        <th style="width: 26%;"><span style="font-size: 24px">Criteria</span></th>
+                        <th style="width: 37%;"><span style="font-size: 24px">Replicated Cache</span></th>
+                        <th style="width: 37%;"><span style="font-size: 24px">Distributed Cache</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span style="font-size: 24px">Optimized For</span></td>
+                        <td class="highlight-cell"><span style="font-size: 24px">Performance</span></td>
+                        <td class="highlight-cell"><span style="font-size: 24px">Consistency</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 24px">Cache Size</span></td>
+                        <td><span style="font-size: 24px">Small (&lt;100 MB)</span></td>
+                        <td><span style="font-size: 24px">Large (&gt;500 MB)</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 24px">Data Type</span></td>
+                        <td><span style="font-size: 24px">Relatively static</span></td>
+                        <td><span style="font-size: 24px">Highly dynamic</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 24px">Update Frequency</span></td>
+                        <td><span style="font-size: 24px">Relatively low</span></td>
+                        <td><span style="font-size: 24px">High</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 24px">Fault Tolerance</span></td>
+                        <td><span style="font-size: 24px">High<br></span><span style="color: rgb(51, 78, 104); font-size: 24px; font-weight: normal; vertical-align: baseline">(no single point of failure)</span></td>
+                        <td><span style="font-size: 24px">Low<br></span><span style="color: rgb(51, 78, 104); font-size: 24px; font-weight: normal; vertical-align: baseline">(central server dependency)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

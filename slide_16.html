@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #F0F4F8;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+        .philosophy-box {
+            background-color: #D9E2EC;
+            border-left: 8px solid #B12A2A;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .philosophy-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .philosophy-text {
+            font-size: 22px;
+            color: #334E68;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .philosophy-text strong {
+            color: #B12A2A;
+            font-weight: bold;
+        }
+        .content-block {
+            background-color: rgba(240, 244, 248, 0.9);
+            border: 3px solid #102A43;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .content-block:last-child {
+            margin-bottom: 0;
+        }
+        .content-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .content-title i {
+            color: #B12A2A;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .content-desc {
+            font-size: 20px;
+            color: #334E68;
+            line-height: 1.5;
+        }
+        .content-desc strong {
+            color: #102A43;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane">
+            <h1>Microservices Architecture – Born from Domain-Driven Design</h1>
+            <div class="philosophy-box">
+                <div class="philosophy-title"><i class="fas fa-bullseye"></i> Core Philosophy</div>
+                <div class="philosophy-text">
+                    If the architect's goal requires high decoupling, prefer <strong>duplication over reuse</strong>. The primary goal of microservices is to physically model the logical concept of bounded contexts.
+                </div>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(0px, 75.2607px);">
+            <div class="content-block">
+                <div class="content-title">
+                    <i class="fas fa-book"></i> Historical Context
+                </div>
+                <div class="content-desc"><span style="font-size: 24px">Microservices is a highly popular architecture style that gained massive momentum after Martin Fowler and James Lewis published their seminal blog post "Microservices" in March 2014.</span></div>
+            </div>
+            <div class="content-block" style="transform: translate(0px, -23.4109px);">
+                <div class="content-title">
+                    <i class="fas fa-cube"></i> Key Inspiration: Bounded Context
+                </div>
+                <div class="content-desc"><span style="font-size: 24px">The architecture is heavily inspired by <strong>Domain-Driven Design (DDD)</strong>, particularly the concept of the <strong>Bounded Context</strong>.<br><br>Each context is strictly decoupled, containing only what it needs internally (code, data schema) without coupling to anything outside its boundary.</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

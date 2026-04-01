@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        .content-list {
+            list-style-type: none;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 40px;
+        }
+        .content-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-list li:last-child {
+            margin-bottom: 0;
+        }
+        .content-list i {
+            color: #B12A2A;
+            margin-top: 5px;
+            margin-right: 15px;
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+        .quote-block {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(217, 226, 236, 0.6);
+            border-left: 5px solid #B12A2A;
+            padding: 25px 30px;
+            margin-top: 20px;
+        }
+        .quote-text {
+            font-size: 28px;
+            font-weight: 400;
+            font-style: italic;
+            color: #102A43;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .quote-author {
+            font-size: 20px;
+            font-weight: bold;
+            color: #B12A2A;
+            text-align: right;
+        }
+        /* Diagram Styles */
+        .diagram-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .api-layer {
+            background-color: #D9E2EC;
+            color: #102A43;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            border: 3px solid #334E68;
+            margin-bottom: 20px;
+        }
+        .arrows-row {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        .arrows-row i {
+            color: #D9E2EC;
+            font-size: 24px;
+        }
+        .services-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 15px;
+        }
+        .service-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+        .service-block {
+            background-color: #334E68;
+            color: #F0F4F8;
+            width: 100%;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border: 2px solid #D9E2EC;
+        }
+        .service-column i.fa-arrow-down {
+            color: #B12A2A;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .db-block {
+            background-color: #B12A2A;
+            color: #F0F4F8;
+            width: 80%;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 236.053px);">
+            <div class="diagram-container">
+                <div class="api-layer">
+                    <i class="fas fa-network-wired"></i> API Layer
+                </div>
+                <div class="arrows-row">
+                    <i class="fas fa-long-arrow-alt-down"></i>
+                    <i class="fas fa-long-arrow-alt-down"></i>
+                    <i class="fas fa-long-arrow-alt-down"></i>
+                </div>
+                <div class="services-row">
+                    <div class="service-column">
+                        <div class="service-block"><span style="font-size: 24px"><i class="fas fa-cogs"></i><br>Service A</span></div>
+                        <i class="fas fa-arrow-down"></i>
+                        <div class="db-block"><span style="font-size: 24px"><i class="fas fa-database"></i> DB A</span></div>
+                    </div>
+                    <div class="service-column">
+                        <div class="service-block"><span style="font-size: 24px"><i class="fas fa-cogs"></i><br>Service B</span></div>
+                        <i class="fas fa-arrow-down"></i>
+                        <div class="db-block"><span style="font-size: 24px"><i class="fas fa-database"></i> DB B</span></div>
+                    </div>
+                    <div class="service-column">
+                        <div class="service-block"><span style="font-size: 24px"><i class="fas fa-cogs"></i><br>Service C</span></div>
+                        <i class="fas fa-arrow-down"></i>
+                        <div class="db-block"><span style="font-size: 24px"><i class="fas fa-database"></i> DB C</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-pane">
+            <h1>Microservices Topology – Small, Single-Purpose Services</h1>
+            <ul class="content-list">
+                <li>
+                    <i class="fas fa-cubes"></i>
+                    <div><span style="font-size: 24px"><strong>Services:</strong> Much smaller than in other distributed architectures (e.g., SOA). Each service contains everything needed for independent operation, including its own database.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-exchange-alt"></i>
+                    <div><span style="font-size: 24px"><strong>API Layer:</strong> An optional but common layer between consumers and services. Used for proxying, naming services, and service discovery. Should NOT be used as a mediator or orchestration engine.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-project-diagram"></i>
+                    <div><span style="font-size: 24px"><strong>Distributed Nature:</strong> Each service runs in its own process (physical machine → VM → container). Solves resource sharing and isolation problems inherent in multi-tenant infrastructure.</span></div>
+                </li>
+            </ul>
+            <div class="quote-block" style="transform: translate(22.5px, -67.5784px);">
+                <div class="quote-text">"Microservice is a label, not a description."</div>
+                <div class="quote-author">— Martin Fowler</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Blueprint grid pattern */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #D9E2EC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #334E68;
+            margin-bottom: 40px;
+        }
+        .content-list {
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+        .content-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-list i {
+            color: #B12A2A;
+            margin-top: 5px;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        .conclusion {
+            font-size: 22px;
+            font-weight: bold;
+            font-style: italic;
+            color: #102A43;
+            line-height: 1.4;
+            background-color: rgba(217, 226, 236, 0.6);
+            padding: 20px;
+            border-left: 5px solid #102A43;
+        }
+        /* Diagram Styles */
+        .diagram-block {
+            width: 100%;
+            padding: 30px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .cloud-block {
+            background-color: #102A43;
+            color: #F0F4F8;
+            border-top: 5px solid #334E68;
+        }
+        .onprem-block {
+            background-color: #334E68;
+            color: #F0F4F8;
+            border-bottom: 5px solid #102A43;
+        }
+        .diagram-block i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #D9E2EC;
+        }
+        .diagram-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .diagram-desc {
+            font-size: 16px;
+            color: #D9E2EC;
+        }
+        .arrow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .arrow-container i {
+            color: #B12A2A;
+            font-size: 36px;
+        }
+        .arrow-label {
+            color: #B12A2A;
+            font-size: 16px;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 44.0948px);">
+            <div class="diagram-block cloud-block">
+                <i class="fas fa-cloud"></i>
+                <div class="diagram-title"><span style="font-size: 32px">Cloud Environment</span></div>
+                <div class="diagram-desc"><span style="font-size: 24px">Processing Units &amp; Virtualized Middleware<br>(Dynamic &amp; Flexible)</span></div>
+            </div>
+<div class="arrow-container">
+                <i class="fas fa-long-arrow-alt-down"></i>
+                <div class="arrow-label">Asynchronous Data Pump<br>&amp; Eventual Consistency</div>
+            </div>
+<div class="diagram-block onprem-block">
+                <i class="fas fa-building"></i>
+                <div class="diagram-title">On-Premise Environment</div>
+                <div class="diagram-desc">Physical Databases &amp; Data Management<br>(Secure &amp; Local)</div>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(-5.15625e-08px, 44.745px);">
+            <h1><span style="font-size: 32px">Hybrid Cloud and On-Premise Deployment Is a Unique Strength</span></h1>
+            <h2>Space-Based Architecture supports a powerful hybrid deployment model</h2>
+            <ul class="content-list">
+                <li>
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <div><span style="color: #ff0000; font-size: 24px"><strong>Cloud Environment</strong></span><span style="font-size: 24px"><strong>:</strong> Processing units and virtualized middleware are deployed in the cloud for dynamic, flexible transaction processing.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-server"></i>
+                    <div><span style="color: #ff0000; font-size: 24px"><strong>On-Premise Environment</strong></span><span style="font-size: 24px"><strong>:</strong> Physical databases and data management remain in a secure, local environment for reporting and data analytics.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-link" style="transform: translate(0px, -13.4983px);"></i>
+                    <div style="transform: translate(0px, -15.9857px);"><span style="color: #ff0000; font-size: 24px"><strong>Enabler</strong></span><span style="font-size: 24px"><strong>:</strong> The asynchronous data pump and eventual consistency model make this cloud-based data synchronization highly effective.</span></div>
+                </li>
+            </ul>
+            <div class="conclusion" style="transform: translate(-591.997px, -27.4153px); width: 1218.29px; min-width: 1218.29px; max-width: 1218.29px;">
+                This hybrid topology is unique to Space-Based Architecture and provides benefits that other architecture styles cannot easily achieve.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

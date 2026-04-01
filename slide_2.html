@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Blueprint grid pattern */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            z-index: 2;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 64px;
+            font-weight: 800;
+            color: #F0F4F8;
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: 32px;
+            font-weight: 400;
+            font-style: italic;
+            color: #D9E2EC;
+            margin-top: 20px;
+        }
+        .agenda-item {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 40px;
+        }
+        .agenda-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #B12A2A;
+            margin-right: 30px;
+            line-height: 1;
+        }
+        .agenda-content h3 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 10px;
+        }
+        .agenda-content p {
+            font-size: 20px;
+            color: #334E68;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 167.122px);">
+            <h1>Agenda</h1>
+            <h2>Roadmap for This Presentation</h2>
+        </div>
+        <div class="right-pane" style="transform: translate(0.0084228px, 93.0507px);">
+            <div class="agenda-item">
+                <div class="agenda-number">I</div>
+                <div class="agenda-content">
+                    <h3>Space-Based Architecture</h3>
+                    <p><span style="font-size: 24px">Chapter 15: Designed for extreme scalability and elasticity by removing the central database bottleneck.</span></p>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-number">II</div>
+                <div class="agenda-content" style="transform: translate(-18.6745px, 0px);">
+                    <h3>Microservices Architecture</h3>
+                    <p><span style="font-size: 24px">Chapter 17: Designed for extreme decoupling through bounded contexts and domain-driven design.</span></p>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-number">III</div>
+                <div class="agenda-content">
+                    <h3>Comparison &amp; Conclusion</h3>
+                    <p><span style="font-size: 24px">Key takeaways, architecture characteristics ratings, and final comparison between the two styles.</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

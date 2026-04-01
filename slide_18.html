@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #F0F4F8;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #D9E2EC;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        .intro-text {
+            font-size: 20px;
+            color: #D9E2EC;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+        .advice-box {
+            background-color: rgba(177, 42, 42, 0.15);
+            border-left: 5px solid #B12A2A;
+            padding: 20px;
+        }
+        .advice-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #B12A2A;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .advice-title i {
+            margin-right: 10px;
+        }
+        .advice-text {
+            font-size: 18px;
+            color: #F0F4F8;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .guideline-block {
+            background-color: #D9E2EC;
+            border-left: 8px solid #102A43;
+            padding: 25px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+        }
+        .guideline-block:last-child {
+            margin-bottom: 0;
+        }
+        .guideline-icon {
+            font-size: 40px;
+            color: #B12A2A;
+            margin-right: 25px;
+            width: 50px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .guideline-content {
+            flex: 1;
+        }
+        .guideline-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 10px;
+        }
+        .guideline-desc {
+            font-size: 20px;
+            color: #334E68;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 36.38px);">
+            <h1>Bounded Context Drives Service Granularity Decisions</h1>
+            <h2>Finding the right service boundaries</h2>
+<div class="intro-text">
+                Finding the right service granularity is one of the biggest challenges in microservices. Architects often make services too small, requiring excessive inter-service communication.
+            </div>
+<div class="advice-box">
+                <div class="advice-title"><i class="fas fa-lightbulb"></i> Key Advice</div>
+                <div class="advice-text">
+                    Iteration is the only way to ensure good service design. Architects rarely find the perfect granularity on the first attempt.
+                </div>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(-5.15625e-08px, 24.7651px);">
+            <div class="guideline-block">
+                <div class="guideline-icon"><i class="fas fa-bullseye"></i></div>
+                <div class="guideline-content">
+                    <div class="guideline-title">Purpose</div>
+                    <div class="guideline-desc"><span style="font-size: 24px">Each microservice should have very high functional cohesion, representing one significant behavior of the application.</span></div>
+                </div>
+            </div>
+<div class="guideline-block">
+                <div class="guideline-icon"><i class="fas fa-exchange-alt"></i></div>
+                <div class="guideline-content">
+                    <div class="guideline-title">Transactions</div>
+                    <div class="guideline-desc"><span style="font-size: 24px">Entities that need to collaborate within a transaction often indicate good service boundaries. Avoid distributed transactions.</span></div>
+                </div>
+            </div>
+<div class="guideline-block">
+                <div class="guideline-icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="guideline-content">
+                    <div class="guideline-title">Choreography</div>
+                    <div class="guideline-desc"><span style="font-size: 24px">If a set of services requires extensive communication to function, consider combining them into a larger service.</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

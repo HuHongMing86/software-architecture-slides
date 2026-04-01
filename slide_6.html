@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Blueprint grid pattern */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #D9E2EC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 16px; /* reduced to save vertical space */
+        }
+        .content-list {
+            list-style-type: none;
+            margin-bottom: 16px; /* reduced */
+        }
+        .content-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 12px; /* reduced */
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-list i {
+            color: #B12A2A;
+            margin-top: 5px;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        .summary-text {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #102A43;
+            line-height: 1.4;
+            background-color: rgba(217, 226, 236, 0.5);
+            padding: 12px; /* reduced */
+            border-left: 5px solid #102A43;
+        }
+        /* Diagram Styles */
+        .pu-diagram {
+            width: 100%;
+            background-color: #102A43;
+            padding: 20px; /* slightly reduced */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px; /* reduced gap */
+        }
+        .pu-title {
+            color: #F0F4F8;
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .pu-component {
+            width: 100%;
+            background-color: #F0F4F8;
+            color: #102A43;
+            padding: 20px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .pu-component.accent {
+            background-color: #B12A2A;
+            color: #F0F4F8;
+        }
+        .pu-component.secondary {
+            background-color: #334E68;
+            color: #F0F4F8;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 178.897px);">
+            <div class="pu-diagram">
+                <div class="pu-title"><span style="font-size: 32px">Processing Unit</span></div>
+                <div class="pu-component"><span style="font-size: 32px">Application Logic</span></div>
+                <div class="pu-component secondary"><span style="font-size: 32px">In-Memory Data Grid</span></div>
+                <div class="pu-component accent"><span style="font-size: 32px">Replication Engine</span></div>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(0px, 18.6956px);">
+            <h1><span style="font-size: 32px">Processing Units Are Self-Contained Application Modules</span></h1>
+            <ul class="content-list">
+                <li>
+                    <i class="fas fa-code"></i>
+                    <div><span style="font-size: 32px"><strong>Application Logic:</strong> Contains web-based components and backend business logic. Smaller apps may deploy in a single unit; larger apps split across multiple units.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-memory"></i>
+                    <div><span style="font-size: 24px"><strong>In-Memory Data Grid:</strong> A replicated cache implemented via products like Hazelcast, Apache Ignite, or Oracle Coherence.</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-sync-alt"></i>
+                    <div><span style="font-size: 24px"><strong>Replication Engine:</strong> Ensures data consistency across all active processing units through asynchronous replication (typically under 100ms).</span></div>
+                </li>
+            </ul>
+            <div class="summary-text" style="transform: translate(-580.646px, -11.6523px); width: 1257.3px; min-width: 1257.3px; max-width: 1257.3px;">
+                When a processing unit updates its cache, the data grid automatically synchronizes the change to all other processing units containing the same named cache. Member lists track all instances and update dynamically as units start or stop.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

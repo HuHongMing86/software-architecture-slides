@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .tradeoff-section {
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        .tradeoff-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #334E68;
+            padding-bottom: 5px;
+        }
+        .tradeoff-title.strengths i {
+            color: #334E68;
+        }
+        .tradeoff-title.weaknesses i {
+            color: #B12A2A;
+        }
+        .tradeoff-title i {
+            margin-right: 15px;
+        }
+        .content-list {
+            list-style-type: none;
+        }
+        .content-list li {
+            font-size: 20px;
+            color: #334E68;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+        }
+        .content-list li i {
+            margin-top: 5px;
+            margin-right: 15px;
+            font-size: 16px;
+        }
+        .strengths-list li i {
+            color: #334E68;
+        }
+        .weaknesses-list li i {
+            color: #B12A2A;
+        }
+        .visual-icon {
+            font-size: 120px;
+            color: #D9E2EC;
+            margin-bottom: 40px;
+        }
+        .conclusion-box {
+            background-color: #D9E2EC;
+            border-left: 5px solid #B12A2A;
+            padding: 25px;
+            width: 100%;
+        }
+        .conclusion-box p {
+            font-size: 22px;
+            color: #102A43;
+            font-weight: bold;
+            font-style: italic;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 159.975px);">
+            <i class="fas fa-balance-scale visual-icon"></i>
+            <div class="conclusion-box">
+                <p>Conclusion: Microservices offer unparalleled agility and scalability, but introduce significant distributed system complexity and performance overhead.</p>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(0.0084228px, 0px);">
+            <h1>Microservices – Key Trade-offs to Consider</h1>
+<div class="tradeoff-section">
+                <div class="tradeoff-title strengths">
+                    <i class="fas fa-plus-circle"></i> Strengths
+                </div>
+                <ul class="content-list strengths-list">
+                    <li><i class="fas fa-check"></i><div><span style="font-size: 24px"><strong>Extreme Deployability:</strong> Independent deployment of small services enables rapid, reliable releases.</span></div></li>
+                    <li><i class="fas fa-check"></i><div><span style="font-size: 24px"><strong>High Scalability &amp; Elasticity:</strong> Scale only the specific services that experience high load.</span></div></li>
+                    <li><i class="fas fa-check"></i><div><span style="font-size: 24px"><strong>Evolutionary Design:</strong> Easy to replace, rewrite, or retire individual services without affecting the whole system.</span></div></li>
+                </ul>
+            </div>
+<div class="tradeoff-section" style="transform: translate(0px, -25px);">
+                <div class="tradeoff-title weaknesses">
+                    <i class="fas fa-minus-circle"></i> Weaknesses
+                </div>
+                <ul class="content-list weaknesses-list">
+                    <li><i class="fas fa-times"></i><div><span style="font-size: 24px"><strong>Distributed Complexity:</strong> Network reliability, latency, and security become major concerns.</span></div></li>
+                    <li><i class="fas fa-times"></i><div><span style="font-size: 24px"><strong>Performance Overhead:</strong> Network hops and data serialization impact overall system speed.</span></div></li>
+                    <li><i class="fas fa-times"></i><div style="transform: translate(0px, -9.41692px);"><span style="font-size: 24px"><strong>Data Consistency:</strong> Managing distributed transactions requires complex patterns like Sagas.</span></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

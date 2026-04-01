@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 2;
+            border-right: 5px solid #B12A2A;
+        }
+        .right-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            background-color: #F0F4F8;
+        }
+        /* Blueprint grid pattern */
+        .right-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #F0F4F8;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+        .insight-box {
+            background-color: rgba(177, 42, 42, 0.15);
+            border-left: 5px solid #B12A2A;
+            padding: 25px;
+        }
+        .insight-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #B12A2A;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .insight-title i {
+            margin-right: 10px;
+        }
+        .insight-text {
+            font-size: 20px;
+            color: #D9E2EC;
+            line-height: 1.5;
+        }
+        .insight-text strong {
+            color: #F0F4F8;
+        }
+        .characteristic-block {
+            background-color: #D9E2EC;
+            border-left: 8px solid #102A43;
+            padding: 25px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+        }
+        .characteristic-block:last-child {
+            margin-bottom: 0;
+        }
+        .characteristic-icon {
+            font-size: 40px;
+            color: #B12A2A;
+            margin-right: 25px;
+            width: 50px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .characteristic-content {
+            flex: 1;
+        }
+        .characteristic-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 10px;
+        }
+        .characteristic-desc {
+            font-size: 20px;
+            color: #334E68;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane" style="transform: translate(0px, 51.0738px);">
+            <h1>Communication – Protocol-Aware Heterogeneous Interoperability</h1>
+<div class="insight-box">
+                <div class="insight-title"><i class="fas fa-info-circle"></i> The Microservices Approach</div>
+                <div class="insight-text">
+                    Unlike Service-Oriented Architecture (SOA) which relies on a central Enterprise Service Bus (ESB) for integration, microservices communicate directly with each other without a central integration hub.
+                </div>
+            </div>
+        </div>
+        <div class="right-pane">
+            <div class="characteristic-block">
+                <div class="characteristic-icon"><i class="fas fa-network-wired"></i></div>
+                <div class="characteristic-content">
+                    <div class="characteristic-title">Protocol-Aware</div>
+                    <div class="characteristic-desc"><span style="font-size: 24px">Services know how to call each other directly using standard protocols (e.g., REST, gRPC, or message queues). The "smart" routing logic lives in the endpoints, not in a central hub.</span></div>
+                </div>
+            </div>
+<div class="characteristic-block">
+                <div class="characteristic-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="characteristic-content">
+                    <div class="characteristic-title">Heterogeneous</div>
+                    <div class="characteristic-desc"><span style="font-size: 24px">Because each service is an independent process, they can be written in completely different technology stacks (Java, Go, Node.js) as long as they support the agreed-upon communication protocol.</span></div>
+                </div>
+            </div>
+<div class="characteristic-block" style="transform: translate(0px, -15.0571px);">
+                <div class="characteristic-icon"><i class="fas fa-handshake"></i></div>
+                <div class="characteristic-content">
+                    <div class="characteristic-title">Interoperability</div>
+                    <div class="characteristic-desc"><span style="font-size: 24px">Services collaborate and exchange data seamlessly to complete complex business workflows, forming a cohesive system from independent parts.</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

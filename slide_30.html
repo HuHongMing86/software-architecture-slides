@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #F0F4F8;
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left-pane {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            position: relative;
+            z-index: 2;
+        }
+        /* Blueprint grid pattern */
+        .left-pane::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(#334E68 1px, transparent 1px),
+                linear-gradient(90deg, #334E68 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        .right-pane {
+            width: 40%;
+            height: 100%;
+            background-color: #102A43;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 50px;
+            z-index: 2;
+            border-left: 5px solid #B12A2A;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #102A43;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+        .takeaway-block {
+            background-color: #D9E2EC;
+            border-left: 8px solid #B12A2A;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .takeaway-block:last-child {
+            margin-bottom: 0;
+        }
+        .takeaway-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #102A43;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .takeaway-title i {
+            color: #B12A2A;
+            margin-right: 15px;
+            font-size: 32px;
+            width: 40px;
+            text-align: center;
+        }
+        .takeaway-desc {
+            font-size: 22px;
+            color: #334E68;
+            line-height: 1.5;
+        }
+        .takeaway-desc strong {
+            color: #102A43;
+        }
+/* Right Pane Styles */
+        .qa-icon {
+            font-size: 140px;
+            color: #D9E2EC;
+            margin-bottom: 40px;
+        }
+        .qa-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #F0F4F8;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .qa-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            font-style: italic;
+            color: #D9E2EC;
+            text-align: center;
+            border-top: 2px solid #B12A2A;
+            padding-top: 20px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body><div class="slide-container">
+        <div class="left-pane">
+            <h1>Key Takeaways</h1>
+<div class="takeaway-block">
+                <div class="takeaway-title">
+                    <i class="fas fa-space-shuttle"></i> Space-Based Architecture
+                </div>
+                <div class="takeaway-desc"><span style="font-size: 24px">Achieves <strong>near-infinite scalability</strong> and <strong>high performance</strong> by removing the central database constraint and relying on replicated in-memory data grids with asynchronous data pumps.</span></div>
+            </div>
+<div class="takeaway-block">
+                <div class="takeaway-title">
+                    <i class="fas fa-cubes"></i> Microservices Architecture
+                </div>
+                <div class="takeaway-desc"><span style="font-size: 24px">Achieves <strong>extreme deployability</strong> and <strong>domain decoupling</strong> by modeling bounded contexts as physically independent, single-purpose services, each owning its own data.</span></div>
+            </div>
+        </div>
+        <div class="right-pane" style="transform: translate(-8.21589px, 109.555px);">
+            <i class="fas fa-comments qa-icon"></i>
+            <div class="qa-title">Questions &amp; Answers</div>
+            <div class="qa-subtitle">Thank you for your time and attention!</div>
+        </div>
+    </div>
+</body>
+</html>
