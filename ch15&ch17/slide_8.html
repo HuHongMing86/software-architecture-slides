@@ -8,13 +8,12 @@
         .slide-container {
             width: 1280px;
             min-height: 720px;
+            max-height: 720px;
             background-color: #F0F4F8;
             font-family: "Times New Roman", Times, serif;
             display: flex;
             position: relative;
-            overflow: hidden;
         }
-        /* Blueprint grid pattern */
         .slide-container::before {
             content: '';
             position: absolute;
@@ -28,75 +27,76 @@
         }
         .left-pane {
             width: 60%;
-            height: 100%;
+            min-height: 720px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 80px;
+            padding: 25px 50px;
             z-index: 2;
         }
         .right-pane {
             width: 40%;
-            height: 100%;
+            min-height: 720px;
             background-color: #D9E2EC;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0 40px;
+            padding: 25px 30px;
             z-index: 2;
             border-left: 5px solid #B12A2A;
         }
         h1 {
-            font-size: 48px;
+            font-size: 34px;
             font-weight: 800;
             color: #102A43;
-            line-height: 1.2;
-            margin-bottom: 10px;
+            line-height: 1.15;
+            margin-bottom: 8px;
         }
         h2 {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 400;
             font-style: italic;
             color: #334E68;
-            margin-bottom: 30px;
+            margin-bottom: 18px;
         }
         .content-list {
             list-style-type: none;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .content-list li {
-            font-size: 20px;
+            font-size: 16px;
             color: #334E68;
-            margin-bottom: 16px;
-            line-height: 1.5;
+            margin-bottom: 10px;
+            line-height: 1.4;
             display: flex;
             align-items: flex-start;
         }
         .content-list i {
             color: #B12A2A;
-            margin-top: 5px;
-            margin-right: 15px;
-            font-size: 20px;
+            margin-top: 3px;
+            margin-right: 12px;
+            font-size: 16px;
+            flex-shrink: 0;
         }
         .conclusion {
-            font-size: 20px;
+            font-size: 15px;
             color: #102A43;
             font-weight: bold;
             font-style: italic;
-            line-height: 1.5;
-            padding-left: 35px;
-            border-left: 4px solid #102A43;
+            line-height: 1.4;
+            padding-left: 20px;
+            border-left: 4px solid #B12A2A;
         }
         .diagram-block {
             background-color: #102A43;
             color: #F0F4F8;
             text-align: center;
-            padding: 20px;
-            margin-bottom: 15px;
-            font-size: 24px;
+            padding: 16px;
+            margin-bottom: 10px;
+            font-size: 18px;
             font-weight: 800;
-            width: 80%;
+            width: 85%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -106,43 +106,43 @@
             background-color: #B12A2A;
         }
         .diagram-block span {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 400;
-            margin-top: 5px;
+            margin-top: 4px;
             color: #D9E2EC;
         }
         .arrow-down {
             color: #334E68;
-            font-size: 32px;
-            margin-bottom: 15px;
+            font-size: 26px;
+            margin-bottom: 10px;
         }
         .async-label {
-            font-size: 16px;
+            font-size: 14px;
             color: #334E68;
             font-style: italic;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
     </style>
 </head>
 <body><div class="slide-container">
         <div class="left-pane">
-            <h1 style="transform: translate(0px, 10.2013px);">Data Pumps Enable Asynchronous Database Updates</h1>
+            <h1>Data Pumps Enable Asynchronous Database Updates</h1>
             <h2>Decoupling processing units from direct database writes</h2>
             <ul class="content-list">
-                <li style="transform: translate(0px, -18.7081px);"><span style="font-size: 24px"><i class="fas fa-envelope"></i></span><span style="color: #ff0000; font-size: 24px"><strong>Mechanism</strong></span><span style="font-size: 24px"><strong>:</strong> Always asynchronous, typically implemented using messaging (e.g., message queues).</span></li>
-                <li style="transform: translate(0px, -25.4069px);"><span style="font-size: 24px"><i class="fas fa-shield-alt"></i></span><span style="color: #ff0000; font-size: 24px"><strong>Benefits</strong></span><span style="font-size: 24px"><strong>:</strong> Supports guaranteed delivery, FIFO ordering, and decoupling between processing units and data writers.</span></li>
-                <li style="transform: translate(0px, -31.9379px);"><span style="font-size: 24px"><i class="fas fa-layer-group"></i></span><span style="color: #ff0000; font-size: 24px"><strong>Granularity</strong></span><span style="font-size: 24px"><strong>:</strong> Multiple data pumps exist, each dedicated to a specific domain or subdomain (e.g., Customer Profile, Customer Wishlist).</span></li>
-                <li style="width: 672.306px; min-width: 672.306px; max-width: 672.306px; transform: translate(-5.47677px, -42.8145px);"><span style="font-size: 24px"><i class="fas fa-file-signature"></i></span><span style="color: #ff0000; font-size: 24px"><strong>Contract</strong></span><span style="font-size: 24px"><strong>:</strong> Each data pump has an associated contract specifying operations (add, delete, update) and data format (JSON, XML).</span></li>
+                <li><i class="fas fa-envelope"></i><div><strong style="color:#B12A2A">Mechanism:</strong> Always asynchronous, typically implemented using messaging (e.g., message queues).</div></li>
+                <li><i class="fas fa-shield-alt"></i><div><strong style="color:#B12A2A">Benefits:</strong> Supports guaranteed delivery, FIFO ordering, and decoupling between processing units and data writers.</div></li>
+                <li><i class="fas fa-layer-group"></i><div><strong style="color:#B12A2A">Granularity:</strong> Multiple data pumps exist, each dedicated to a specific domain or subdomain (e.g., Customer Profile, Customer Wishlist).</div></li>
+                <li><i class="fas fa-file-signature"></i><div><strong style="color:#B12A2A">Contract:</strong> Each data pump has an associated contract specifying operations (add, delete, update) and data format (JSON, XML).</div></li>
             </ul>
-            <div class="conclusion" style="transform: translate(-80px, -70.0575px); width: 1257.99px; min-width: 1257.99px; max-width: 1257.99px;"><span style="color: #ff0000; font-size: 24px">When a processing unit receives a request and updates its cache, it becomes the "update owner" and is responsible for sending the update through the data pump.</span></div>
+            <div class="conclusion">When a processing unit receives a request and updates its cache, it becomes the "update owner" and is responsible for sending the update through the data pump.</div>
         </div>
-        <div class="right-pane" style="transform: translate(0.0084228px, 106.707px);">
-            <div class="diagram-block"><span style="font-size: 24px">Processing Unit</span><span style="color: rgb(217, 226, 236); font-size: 24px; font-weight: 400">(Updates In-Memory Cache)</span></div>
+        <div class="right-pane">
+            <div class="diagram-block">Processing Unit<span>(Updates In-Memory Cache)</span></div>
             <div class="async-label">Asynchronous Message</div>
             <i class="fas fa-arrow-down arrow-down"></i>
-            <div class="diagram-block pump"><span style="font-size: 24px">Data Pump</span><span style="color: rgb(217, 226, 236); font-size: 24px; font-weight: 400">(Message Queue)</span></div>
+            <div class="diagram-block pump">Data Pump<span>(Message Queue)</span></div>
             <i class="fas fa-arrow-down arrow-down"></i>
-            <div class="diagram-block"><span style="font-size: 24px">Data Writer</span><span style="color: rgb(217, 226, 236); font-size: 24px; font-weight: 400">(Updates Physical DB)</span></div>
+            <div class="diagram-block">Data Writer<span>(Updates Physical DB)</span></div>
         </div>
     </div>
 </body>

@@ -8,34 +8,33 @@
         .slide-container {
             width: 1280px;
             min-height: 720px;
+            max-height: 720px;
             background-color: #F0F4F8;
             font-family: "Times New Roman", Times, serif;
             display: flex;
             position: relative;
-            overflow: hidden;
         }
         .left-pane {
             width: 40%;
-            height: 100%;
+            min-height: 720px;
             background-color: #102A43;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 50px;
+            padding: 30px 35px;
             z-index: 2;
             border-right: 5px solid #B12A2A;
         }
         .right-pane {
             width: 60%;
-            height: 100%;
+            min-height: 720px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 60px;
+            padding: 25px 40px;
             position: relative;
             background-color: #F0F4F8;
         }
-        /* Blueprint grid pattern */
         .right-pane::before {
             content: '';
             position: absolute;
@@ -48,32 +47,32 @@
             z-index: 1;
         }
         h1 {
-            font-size: 48px;
+            font-size: 34px;
             font-weight: 800;
             color: #F0F4F8;
-            line-height: 1.2;
-            margin-bottom: 40px;
+            line-height: 1.15;
+            margin-bottom: 25px;
         }
         .insight-box {
             background-color: rgba(177, 42, 42, 0.15);
             border-left: 5px solid #B12A2A;
-            padding: 25px;
+            padding: 18px;
         }
         .insight-title {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
             color: #B12A2A;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
         .insight-title i {
-            margin-right: 10px;
+            margin-right: 8px;
         }
         .insight-text {
-            font-size: 20px;
+            font-size: 15px;
             color: #D9E2EC;
-            line-height: 1.5;
+            line-height: 1.4;
         }
         .insight-text strong {
             color: #F0F4F8;
@@ -81,8 +80,8 @@
         .characteristic-block {
             background-color: #D9E2EC;
             border-left: 8px solid #102A43;
-            padding: 25px;
-            margin-bottom: 25px;
+            padding: 18px;
+            margin-bottom: 18px;
             position: relative;
             z-index: 2;
             display: flex;
@@ -92,33 +91,34 @@
             margin-bottom: 0;
         }
         .characteristic-icon {
-            font-size: 40px;
+            font-size: 30px;
             color: #B12A2A;
-            margin-right: 25px;
-            width: 50px;
+            margin-right: 18px;
+            width: 40px;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 3px;
+            flex-shrink: 0;
         }
         .characteristic-content {
             flex: 1;
         }
         .characteristic-title {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 800;
             color: #102A43;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
         .characteristic-desc {
-            font-size: 20px;
+            font-size: 16px;
             color: #334E68;
-            line-height: 1.5;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body><div class="slide-container">
-        <div class="left-pane" style="transform: translate(0px, 51.0738px);">
+        <div class="left-pane">
             <h1>Communication – Protocol-Aware Heterogeneous Interoperability</h1>
-<div class="insight-box">
+            <div class="insight-box">
                 <div class="insight-title"><i class="fas fa-info-circle"></i> The Microservices Approach</div>
                 <div class="insight-text">
                     Unlike Service-Oriented Architecture (SOA) which relies on a central Enterprise Service Bus (ESB) for integration, microservices communicate directly with each other without a central integration hub.
@@ -130,21 +130,21 @@
                 <div class="characteristic-icon"><i class="fas fa-network-wired"></i></div>
                 <div class="characteristic-content">
                     <div class="characteristic-title">Protocol-Aware</div>
-                    <div class="characteristic-desc"><span style="font-size: 24px">Services know how to call each other directly using standard protocols (e.g., REST, gRPC, or message queues). The "smart" routing logic lives in the endpoints, not in a central hub.</span></div>
+                    <div class="characteristic-desc">Services know how to call each other directly using standard protocols (e.g., REST, gRPC, or message queues). The "smart" routing logic lives in the endpoints, not in a central hub.</div>
                 </div>
             </div>
-<div class="characteristic-block">
+            <div class="characteristic-block">
                 <div class="characteristic-icon"><i class="fas fa-laptop-code"></i></div>
                 <div class="characteristic-content">
                     <div class="characteristic-title">Heterogeneous</div>
-                    <div class="characteristic-desc"><span style="font-size: 24px">Because each service is an independent process, they can be written in completely different technology stacks (Java, Go, Node.js) as long as they support the agreed-upon communication protocol.</span></div>
+                    <div class="characteristic-desc">Because each service is an independent process, they can be written in completely different technology stacks (Java, Go, Node.js) as long as they support the agreed-upon communication protocol.</div>
                 </div>
             </div>
-<div class="characteristic-block" style="transform: translate(0px, -15.0571px);">
+            <div class="characteristic-block">
                 <div class="characteristic-icon"><i class="fas fa-handshake"></i></div>
                 <div class="characteristic-content">
                     <div class="characteristic-title">Interoperability</div>
-                    <div class="characteristic-desc"><span style="font-size: 24px">Services collaborate and exchange data seamlessly to complete complex business workflows, forming a cohesive system from independent parts.</span></div>
+                    <div class="characteristic-desc">Services collaborate and exchange data seamlessly to complete complex business workflows, forming a cohesive system from independent parts.</div>
                 </div>
             </div>
         </div>

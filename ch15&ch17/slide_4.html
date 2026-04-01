@@ -8,11 +8,11 @@
         .slide-container {
             width: 1280px;
             min-height: 720px;
+            max-height: 720px;
             background-color: #F0F4F8;
             font-family: "Times New Roman", Times, serif;
             display: flex;
             position: relative;
-            overflow: hidden;
         }
         .slide-container::before {
             content: '';
@@ -27,34 +27,34 @@
         }
         .left-pane {
             width: 40%;
-            height: 100%;
+            min-height: 720px;
             background-color: #D9E2EC;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0 20px;
+            padding: 30px 20px;
             z-index: 2;
             border-right: 5px solid #B12A2A;
         }
         .right-pane {
             width: 60%;
-            height: 100%;
+            min-height: 720px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 60px;
+            padding: 30px 40px;
             z-index: 2;
         }
         h1 {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 800;
             color: #102A43;
-            line-height: 1.2;
-            margin-bottom: 10px;
+            line-height: 1.15;
+            margin-bottom: 8px;
         }
         h2 {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 400;
             font-style: italic;
             color: #334E68;
@@ -64,26 +64,25 @@
             list-style-type: none;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px 12px;
-            margin-top: 10px;
+            gap: 6px 12px;
+            margin-top: 8px;
         }
         .content-list li {
-            font-size: 20px;
+            font-size: 16px;
             color: #334E68;
-            line-height: 1.2;
+            line-height: 1.3;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
-            padding: 4px 0;
+            gap: 8px;
+            padding: 3px 0;
         }
         .content-list i {
             color: #B12A2A;
             margin-top: 3px;
-            font-size: 20px;
-            width: 26px;
+            font-size: 16px;
+            width: 22px;
             flex-shrink: 0;
         }
-        /* Diagram Styles */
         .diagram-container {
             width: 100%;
             display: flex;
@@ -101,24 +100,25 @@
             padding: 12px;
             text-align: center;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             width: 140px;
         }
+        .pu-block i { font-size: 22px; }
         .grid-block {
             background-color: #334E68;
             color: #F0F4F8;
-            padding: 14px;
+            padding: 12px;
             text-align: center;
             font-weight: bold;
-            font-size: 22px;
+            font-size: 18px;
             width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border: 2px dashed #D9E2EC;
         }
         .arrow-down {
             color: #B12A2A;
-            font-size: 32px;
-            margin-bottom: 8px;
+            font-size: 28px;
+            margin-bottom: 6px;
         }
         .async-label {
             color: #B12A2A;
@@ -130,37 +130,37 @@
         .db-block {
             background-color: #B12A2A;
             color: #F0F4F8;
-            padding: 14px;
+            padding: 12px;
             text-align: center;
             font-weight: bold;
-            font-size: 22px;
+            font-size: 18px;
             width: 80%;
         }
     </style>
 </head>
 <body><div class="slide-container">
-        <div class="left-pane" style="transform: translate(0px, 190.575px);">
+        <div class="left-pane">
             <div class="diagram-container">
                 <div class="pu-container">
-                    <div class="pu-block" style="width: 170.106px; min-width: 170.106px; max-width: 170.106px; transform: translate(-30.1064px, 0px);"><span style="font-size: 32px"><i class="fas fa-microchip"></i><br>Processing Unit</span></div>
-                    <div class="pu-block" style="width: 174.892px; min-width: 174.892px; max-width: 174.892px; transform: translate(0px, 0px);"><span style="font-size: 32px"><i class="fas fa-microchip"></i><br>Processing Unit</span></div>
+                    <div class="pu-block"><i class="fas fa-microchip"></i><br>Processing Unit</div>
+                    <div class="pu-block"><i class="fas fa-microchip"></i><br>Processing Unit</div>
                 </div>
-                <div class="grid-block"><span style="font-size: 24px"><i class="fas fa-memory"></i> In-Memory Data Grid</span></div>
-                <div class="async-label"><span style="font-size: 32px">Asynchronous Data Pump</span></div>
+                <div class="grid-block"><i class="fas fa-memory"></i> In-Memory Data Grid</div>
+                <div class="async-label">Asynchronous Data Pump</div>
                 <i class="fas fa-arrow-down arrow-down"></i>
-                <div class="db-block"><span style="font-size: 32px"><i class="fas fa-database"></i> Database</span></div>
+                <div class="db-block"><i class="fas fa-database"></i> Database</div>
             </div>
         </div>
         <div class="right-pane">
             <h1>Space-Based Architecture Eliminates the Database Bottleneck</h1>
-            <h2><span style="font-size: 32px">Removing the central database as a synchronous constraint</span></h2>
+            <h2>Removing the central database as a synchronous constraint</h2>
             <ul class="content-list">
-                <li style="transform: translate(-10.268px, 0.255867px);"><span style="font-size: 32px"><i class="fas fa-space-shuttle"></i><strong>Tuple Space Concept:</strong> Shared memory for parallel processors.</span></li>
-                <li style="transform: translate(0px, -2.55454px);"><span style="font-size: 32px"><i class="fas fa-bolt"></i><strong>Core Principle:</strong> Replace sync DB with replicated in-memory grids.</span></li>
-                <li style="transform: translate(-10.268px, 0px);"><span style="font-size: 24px"><i class="fas fa-memory"></i><strong>In-Memory Data:</strong> Data kept in memory and replicated across units.</span></li>
-                <li style="transform: translate(0px, -4.55118px);"><span style="font-size: 24px"><i class="fas fa-random"></i><strong>Asynchronous Updates:</strong> Updates sent asynchronously via data pumps.</span></li>
-                <li style="transform: translate(-10.268px, 0px);"><span style="font-size: 24px"><i class="fas fa-expand-arrows-alt"></i><strong>Dynamic Scaling:</strong> Units start/shut down with load.</span></li>
-                <li style="transform: translate(0px, -7.99493px);"><span style="font-size: 24px"><i class="fas fa-rocket"></i><strong>Near-Infinite Scalability:</strong> Eliminates DB bottleneck for massive scale.</span></li>
+                <li><i class="fas fa-space-shuttle"></i><strong>Tuple Space Concept:</strong> Shared memory for parallel processors.</li>
+                <li><i class="fas fa-bolt"></i><strong>Core Principle:</strong> Replace sync DB with replicated in-memory grids.</li>
+                <li><i class="fas fa-memory"></i><strong>In-Memory Data:</strong> Data kept in memory and replicated across units.</li>
+                <li><i class="fas fa-random"></i><strong>Asynchronous Updates:</strong> Updates sent asynchronously via data pumps.</li>
+                <li><i class="fas fa-expand-arrows-alt"></i><strong>Dynamic Scaling:</strong> Units start/shut down with load.</li>
+                <li><i class="fas fa-rocket"></i><strong>Near-Infinite Scalability:</strong> Eliminates DB bottleneck for massive scale.</li>
             </ul>
         </div>
     </div>

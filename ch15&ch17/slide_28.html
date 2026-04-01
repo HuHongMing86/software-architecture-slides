@@ -8,35 +8,34 @@
         .slide-container {
             width: 1280px;
             min-height: 720px;
+            max-height: 720px;
             background-color: #F0F4F8;
             font-family: "Times New Roman", Times, serif;
             display: flex;
             position: relative;
-            overflow: hidden;
         }
         .left-pane {
             width: 40%;
-            height: 100%;
+            min-height: 720px;
             background-color: #102A43;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0 50px;
+            padding: 30px 35px;
             z-index: 2;
             border-right: 5px solid #B12A2A;
         }
         .right-pane {
             width: 60%;
-            height: 100%;
+            min-height: 720px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 60px;
+            padding: 30px 40px;
             position: relative;
             background-color: #F0F4F8;
         }
-        /* Blueprint grid pattern */
         .right-pane::before {
             content: '';
             position: absolute;
@@ -49,28 +48,28 @@
             z-index: 1;
         }
         h1 {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 800;
             color: #102A43;
-            line-height: 1.2;
-            margin-bottom: 30px;
+            line-height: 1.15;
+            margin-bottom: 20px;
             position: relative;
             z-index: 2;
         }
         .tradeoff-section {
-            margin-bottom: 25px;
+            margin-bottom: 18px;
             position: relative;
             z-index: 2;
         }
         .tradeoff-title {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 800;
             color: #102A43;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             border-bottom: 2px solid #334E68;
-            padding-bottom: 5px;
+            padding-bottom: 4px;
         }
         .tradeoff-title.strengths i {
             color: #334E68;
@@ -79,23 +78,24 @@
             color: #B12A2A;
         }
         .tradeoff-title i {
-            margin-right: 15px;
+            margin-right: 12px;
         }
         .content-list {
             list-style-type: none;
         }
         .content-list li {
-            font-size: 20px;
+            font-size: 16px;
             color: #334E68;
-            margin-bottom: 12px;
-            line-height: 1.4;
+            margin-bottom: 8px;
+            line-height: 1.35;
             display: flex;
             align-items: flex-start;
         }
         .content-list li i {
-            margin-top: 5px;
-            margin-right: 15px;
-            font-size: 16px;
+            margin-top: 3px;
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
         }
         .strengths-list li i {
             color: #334E68;
@@ -104,52 +104,52 @@
             color: #B12A2A;
         }
         .visual-icon {
-            font-size: 120px;
+            font-size: 90px;
             color: #D9E2EC;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         .conclusion-box {
             background-color: #D9E2EC;
             border-left: 5px solid #B12A2A;
-            padding: 25px;
+            padding: 18px;
             width: 100%;
         }
         .conclusion-box p {
-            font-size: 22px;
+            font-size: 16px;
             color: #102A43;
             font-weight: bold;
             font-style: italic;
-            line-height: 1.5;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body><div class="slide-container">
-        <div class="left-pane" style="transform: translate(0px, 159.975px);">
+        <div class="left-pane">
             <i class="fas fa-balance-scale visual-icon"></i>
             <div class="conclusion-box">
                 <p>Conclusion: Microservices offer unparalleled agility and scalability, but introduce significant distributed system complexity and performance overhead.</p>
             </div>
         </div>
-        <div class="right-pane" style="transform: translate(0.0084228px, 0px);">
+        <div class="right-pane">
             <h1>Microservices – Key Trade-offs to Consider</h1>
-<div class="tradeoff-section">
+            <div class="tradeoff-section">
                 <div class="tradeoff-title strengths">
                     <i class="fas fa-plus-circle"></i> Strengths
                 </div>
                 <ul class="content-list strengths-list">
-                    <li><i class="fas fa-check"></i><div><span style="font-size: 24px"><strong>Extreme Deployability:</strong> Independent deployment of small services enables rapid, reliable releases.</span></div></li>
-                    <li><i class="fas fa-check"></i><div><span style="font-size: 24px"><strong>High Scalability &amp; Elasticity:</strong> Scale only the specific services that experience high load.</span></div></li>
-                    <li><i class="fas fa-check"></i><div><span style="font-size: 24px"><strong>Evolutionary Design:</strong> Easy to replace, rewrite, or retire individual services without affecting the whole system.</span></div></li>
+                    <li><i class="fas fa-check"></i><div><strong>Extreme Deployability:</strong> Independent deployment of small services enables rapid, reliable releases.</div></li>
+                    <li><i class="fas fa-check"></i><div><strong>High Scalability &amp; Elasticity:</strong> Scale only the specific services that experience high load.</div></li>
+                    <li><i class="fas fa-check"></i><div><strong>Evolutionary Design:</strong> Easy to replace, rewrite, or retire individual services without affecting the whole system.</div></li>
                 </ul>
             </div>
-<div class="tradeoff-section" style="transform: translate(0px, -25px);">
+            <div class="tradeoff-section">
                 <div class="tradeoff-title weaknesses">
                     <i class="fas fa-minus-circle"></i> Weaknesses
                 </div>
                 <ul class="content-list weaknesses-list">
-                    <li><i class="fas fa-times"></i><div><span style="font-size: 24px"><strong>Distributed Complexity:</strong> Network reliability, latency, and security become major concerns.</span></div></li>
-                    <li><i class="fas fa-times"></i><div><span style="font-size: 24px"><strong>Performance Overhead:</strong> Network hops and data serialization impact overall system speed.</span></div></li>
-                    <li><i class="fas fa-times"></i><div style="transform: translate(0px, -9.41692px);"><span style="font-size: 24px"><strong>Data Consistency:</strong> Managing distributed transactions requires complex patterns like Sagas.</span></div></li>
+                    <li><i class="fas fa-times"></i><div><strong>Distributed Complexity:</strong> Network reliability, latency, and security become major concerns.</div></li>
+                    <li><i class="fas fa-times"></i><div><strong>Performance Overhead:</strong> Network hops and data serialization impact overall system speed.</div></li>
+                    <li><i class="fas fa-times"></i><div><strong>Data Consistency:</strong> Managing distributed transactions requires complex patterns like Sagas.</div></li>
                 </ul>
             </div>
         </div>

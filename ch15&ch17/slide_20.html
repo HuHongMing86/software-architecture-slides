@@ -8,11 +8,11 @@
         .slide-container {
             width: 1280px;
             min-height: 720px;
+            max-height: 720px;
             background-color: #F0F4F8;
             font-family: "Times New Roman", Times, serif;
             display: flex;
             position: relative;
-            overflow: hidden;
         }
         .slide-container::before {
             content: '';
@@ -27,78 +27,78 @@
         }
         .left-pane {
             width: 60%;
-            /* allow height to be controlled by content so deepest element can be <720 */
-            height: auto;
+            min-height: 720px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            padding: 0 60px;
+            justify-content: center;
+            padding: 25px 40px;
             z-index: 2;
         }
         .right-pane {
             width: 40%;
-            height: auto;
+            min-height: 720px;
             background-color: #102A43;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0 40px;
+            padding: 25px 30px;
             z-index: 2;
             border-left: 5px solid #B12A2A;
         }
         h1 {
-            font-size: 42px;
+            font-size: 32px;
             font-weight: 800;
             color: #102A43;
-            line-height: 1.2;
-            margin-bottom: 15px;
+            line-height: 1.15;
+            margin-bottom: 8px;
         }
         h2 {
-            font-size: 24px;
+            font-size: 17px;
             font-weight: 400;
             font-style: italic;
             color: #334E68;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         .content-list {
             list-style-type: none;
-            margin-bottom: 20px; /* reduced */
+            margin-bottom: 12px;
         }
         .content-list li {
-            font-size: 20px;
+            font-size: 15px;
             color: #334E68;
-            margin-bottom: 8px; /* tightened to reduce vertical space */
-            line-height: 1.5;
+            margin-bottom: 6px;
+            line-height: 1.4;
             display: flex;
             align-items: flex-start;
         }
         .content-list i {
             color: #B12A2A;
-            margin-top: 5px;
-            margin-right: 15px;
-            font-size: 20px;
+            margin-top: 3px;
+            margin-right: 10px;
+            font-size: 15px;
+            flex-shrink: 0;
         }
         .conclusion {
-            font-size: 22px;
+            font-size: 15px;
             font-weight: bold;
             font-style: italic;
             color: #102A43;
             line-height: 1.4;
             background-color: rgba(217, 226, 236, 0.6);
-            padding: 20px;
+            padding: 12px 15px;
             border-left: 5px solid #102A43;
         }
         .diagram-container {
             display: flex;
             align-items: stretch;
             width: 100%;
-            margin-bottom: 20px; /* slightly reduced */
+            margin-bottom: 15px;
         }
         .service-block {
             background-color: #F0F4F8;
             color: #102A43;
-            padding: 30px 20px;
+            padding: 20px 15px;
             flex: 2;
             text-align: center;
             border: 3px solid #D9E2EC;
@@ -109,7 +109,7 @@
         .sidecar-block {
             background-color: #B12A2A;
             color: #F0F4F8;
-            padding: 30px 15px;
+            padding: 20px 12px;
             flex: 1;
             text-align: center;
             display: flex;
@@ -119,31 +119,31 @@
             border-left: none;
         }
         .diagram-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .diagram-desc {
-            font-size: 16px;
+            font-size: 15px;
             font-style: italic;
         }
         .diagram-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+            font-size: 32px;
+            margin-bottom: 10px;
         }
         .sidecar-icon {
-            font-size: 30px;
-            margin-bottom: 15px;
+            font-size: 24px;
+            margin-bottom: 10px;
             color: #D9E2EC;
         }
         .team-label {
             color: #D9E2EC;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 8px;
             border-top: 1px dashed #334E68;
-            padding-top: 10px;
+            padding-top: 8px;
             width: 100%;
         }
     </style>
@@ -153,41 +153,27 @@
             <h1>The Sidecar Pattern Solves Operational Reuse Without Domain Coupling</h1>
             <h2>Separating domain concerns from operational concerns</h2>
             <ul class="content-list">
-                <li>
-                    <i class="fas fa-copy"></i>
-                    <div><span style="font-size: 24px"><strong>The Dilemma:</strong> Microservices prefer duplication over coupling for domain concerns, but operational concerns (monitoring, logging, circuit breakers) genuinely benefit from reuse.</span></div>
-                </li>
-                <li>
-                    <i class="fas fa-motorcycle"></i>
-                    <div><span style="font-size: 24px"><strong>The Sidecar Pattern:</strong> Each service includes a separate sidecar component handling all operational concerns.</span></div>
-                </li>
-                <li>
-                    <i class="fas fa-users-cog"></i>
-                    <div><span style="font-size: 24px"><strong>Ownership:</strong> A shared infrastructure team owns and maintains the sidecar, while the service team owns the domain logic.</span></div>
-                </li>
-                <li>
-                    <i class="fas fa-arrow-circle-up"></i>
-                    <div><span style="font-size: 24px"><strong>Upgrades:</strong> When upgrades are needed (e.g., new monitoring tool version), the infrastructure team updates the sidecar, and all microservices automatically benefit.</span></div>
-                </li>
+                <li><i class="fas fa-copy"></i><div><strong>The Dilemma:</strong> Microservices prefer duplication over coupling for domain concerns, but operational concerns (monitoring, logging, circuit breakers) genuinely benefit from reuse.</div></li>
+                <li><i class="fas fa-motorcycle"></i><div><strong>The Sidecar Pattern:</strong> Each service includes a separate sidecar component handling all operational concerns.</div></li>
+                <li><i class="fas fa-users-cog"></i><div><strong>Ownership:</strong> A shared infrastructure team owns and maintains the sidecar, while the service team owns the domain logic.</div></li>
+                <li><i class="fas fa-arrow-circle-up"></i><div><strong>Upgrades:</strong> When upgrades are needed (e.g., new monitoring tool version), the infrastructure team updates the sidecar, and all microservices automatically benefit.</div></li>
             </ul>
-            <div class="conclusion" style="transform: translate(-48.5816px, -29.4264px); width: 731.464px; min-width: 731.464px; max-width: 731.464px;">
-                This cleanly separates domain concerns (owned by service teams) from operational concerns (owned by infrastructure teams).
-            </div>
+            <div class="conclusion">This cleanly separates domain concerns (owned by service teams) from operational concerns (owned by infrastructure teams).</div>
         </div>
         <div class="right-pane">
             <div class="diagram-container">
                 <div class="service-block">
                     <i class="fas fa-cogs diagram-icon" style="color: #334E68;"></i>
                     <div class="diagram-title">Microservice</div>
-                    <div class="diagram-desc"><span style="font-size: 24px">Domain Logic<br>&amp; Business Rules</span></div>
+                    <div class="diagram-desc">Domain Logic<br>&amp; Business Rules</div>
                 </div>
                 <div class="sidecar-block">
                     <i class="fas fa-shield-alt sidecar-icon"></i>
-                    <div class="diagram-title" style="font-size: 20px;">Sidecar</div>
-                    <div class="diagram-desc" style="color: #D9E2EC;"><span style="font-size: 24px">Monitoring<br>Logging<br>Security</span></div>
+                    <div class="diagram-title" style="font-size: 18px;">Sidecar</div>
+                    <div class="diagram-desc" style="color: #D9E2EC;">Monitoring<br>Logging<br>Security</div>
                 </div>
             </div>
-<div class="team-label"><span style="font-size: 24px"><i class="fas fa-user-tie"></i> Service Team owns Domain<br><i class="fas fa-hard-hat" style="margin-top: 10px;"></i> Infra Team owns Sidecar</span></div>
+            <div class="team-label"><i class="fas fa-user-tie"></i> Service Team owns Domain<br><i class="fas fa-hard-hat" style="margin-top: 8px;"></i> Infra Team owns Sidecar</div>
         </div>
     </div>
 </body>

@@ -8,34 +8,33 @@
         .slide-container {
             width: 1280px;
             min-height: 720px;
+            max-height: 720px;
             background-color: #F0F4F8;
             font-family: "Times New Roman", Times, serif;
             display: flex;
             position: relative;
-            overflow: hidden;
         }
         .left-pane {
             width: 40%;
-            height: 100%;
+            min-height: 720px;
             background-color: #102A43;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 50px;
+            padding: 30px 35px;
             z-index: 2;
             border-right: 5px solid #B12A2A;
         }
         .right-pane {
             width: 60%;
-            height: 100%;
+            min-height: 720px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 60px;
+            padding: 25px 40px;
             position: relative;
             background-color: #F0F4F8;
         }
-        /* Blueprint grid pattern */
         .right-pane::before {
             content: '';
             position: absolute;
@@ -48,39 +47,39 @@
             z-index: 1;
         }
         h1 {
-            font-size: 48px;
+            font-size: 32px;
             font-weight: 800;
             color: #F0F4F8;
-            line-height: 1.2;
-            margin-bottom: 40px;
+            line-height: 1.15;
+            margin-bottom: 25px;
         }
         .definition-box {
             background-color: rgba(217, 226, 236, 0.1);
             border-left: 5px solid #D9E2EC;
-            padding: 25px;
+            padding: 18px;
         }
         .definition-title {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
             color: #D9E2EC;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
         .definition-title i {
-            margin-right: 10px;
+            margin-right: 8px;
         }
         .definition-text {
-            font-size: 20px;
+            font-size: 14px;
             color: #F0F4F8;
-            line-height: 1.5;
+            line-height: 1.4;
             font-style: italic;
         }
         .concept-block {
             background-color: #D9E2EC;
             border-left: 8px solid #102A43;
-            padding: 25px;
-            margin-bottom: 25px;
+            padding: 18px;
+            margin-bottom: 18px;
             position: relative;
             z-index: 2;
             display: flex;
@@ -90,26 +89,27 @@
             margin-bottom: 0;
         }
         .concept-icon {
-            font-size: 40px;
+            font-size: 30px;
             color: #B12A2A;
-            margin-right: 25px;
-            width: 50px;
+            margin-right: 18px;
+            width: 40px;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 3px;
+            flex-shrink: 0;
         }
         .concept-content {
             flex: 1;
         }
         .concept-title {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 800;
             color: #102A43;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
         .concept-desc {
-            font-size: 20px;
+            font-size: 15px;
             color: #334E68;
-            line-height: 1.5;
+            line-height: 1.4;
         }
         .concept-desc strong {
             color: #102A43;
@@ -117,9 +117,9 @@
     </style>
 </head>
 <body><div class="slide-container">
-        <div class="left-pane" style="transform: translate(0px, 51.0738px);">
+        <div class="left-pane">
             <h1>The Saga Pattern Handles Distributed Transactions with Compensating Actions</h1>
-<div class="definition-box">
+            <div class="definition-box">
                 <div class="definition-title"><i class="fas fa-book"></i> What is a Saga?</div>
                 <div class="definition-text">
                     A sequence of local transactions where each transaction updates data within a single service. If a local transaction fails, the saga executes a series of compensating transactions that undo the changes made by the preceding local transactions.
@@ -131,21 +131,21 @@
                 <div class="concept-icon"><i class="fas fa-exclamation-circle"></i></div>
                 <div class="concept-content">
                     <div class="concept-title">The Challenge</div>
-                    <div class="concept-desc"><span style="font-size: 24px">Traditional ACID distributed transactions (like two-phase commit) are not viable in microservices due to <strong>high coupling</strong> and severe <strong>performance bottlenecks</strong> across independent databases.</span></div>
+                    <div class="concept-desc">Traditional ACID distributed transactions (like two-phase commit) are not viable in microservices due to <strong>high coupling</strong> and severe <strong>performance bottlenecks</strong> across independent databases.</div>
                 </div>
             </div>
-<div class="concept-block" style="transform: translate(0px, -17.8188px);">
+            <div class="concept-block">
                 <div class="concept-icon"><i class="fas fa-project-diagram"></i></div>
                 <div class="concept-content">
                     <div class="concept-title">The Saga Solution</div>
-                    <div class="concept-desc"><span style="font-size: 24px">A business workflow is divided into a sequence of <strong>independent local transactions</strong>. Each service completes its part of the work and publishes an event or message to trigger the next step in the saga.</span></div>
+                    <div class="concept-desc">A business workflow is divided into a sequence of <strong>independent local transactions</strong>. Each service completes its part of the work and publishes an event or message to trigger the next step in the saga.</div>
                 </div>
             </div>
-<div class="concept-block" style="transform: translate(0px, -36.272px);">
+            <div class="concept-block">
                 <div class="concept-icon"><i class="fas fa-undo-alt"></i></div>
                 <div class="concept-content">
                     <div class="concept-title">Compensating Actions</div>
-                    <div class="concept-desc" style="transform: translate(-25px, -8.05078px);"><span style="font-size: 24px">When a local transaction fails, the system cannot perform a standard database rollback. Instead, it triggers a series of <strong>compensating transactions</strong> to logically reverse the preceding successful steps (e.g., refunding a payment if inventory allocation fails).</span></div>
+                    <div class="concept-desc">When a local transaction fails, the system cannot perform a standard database rollback. Instead, it triggers a series of <strong>compensating transactions</strong> to logically reverse the preceding successful steps (e.g., refunding a payment if inventory allocation fails).</div>
                 </div>
             </div>
         </div>
